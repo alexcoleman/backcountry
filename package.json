@@ -1,0 +1,27 @@
+{
+  "name": "Backcountry",
+  "version": "1.0.0",
+  "private": true,
+  "description": "T",
+  "keywords": [
+    ""
+  ],
+  "author": "Alex Coleman <alex@rumgr.com>",
+  "contributors": [
+    "Alex Coleman <alex@rumgr.com>"
+  ],
+  "dependencies": {
+    "express": "3.1.0",
+    "hogan-engine": "0.9.2",
+    "nodemon": "0.7.2"
+  },
+  "main": "index",
+  "engines": {
+    "node": "0.8.14",
+    "npm": "1.1.65"
+  },
+  "scripts": {
+    "start": "node boot.js"
+  },
+  "devDependencies": {}
+}
