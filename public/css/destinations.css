@@ -1,0 +1,5 @@
+.destinationsWrapper {margin-top:30px;}
+.adestination a {position:relative; display:block; height:180px; margin-bottom:0px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,.2);}
+.adestination a:hover {text-decoration:none;}
+.adestination a img {position:absolute; z-index:-1; top:0; right:0;}
+.adestination a .trailname {background-color:rgba(0,0,0,.2); margin-top:20px; padding:10px; color:#FFF; text-shadow:0 1px 1px rgba(0,0,0,.5);}

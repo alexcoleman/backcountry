@@ -1,16 +1,22 @@
 {{> includes/header.html}}
 
-<div class="container">
+<div class="container destinationsWrapper">
   <div class="row">
     <div class="span12">
-      <ul>
-      {{#destinations}}
-        <li>
-          <a href="/destination/{{nameUrl}}">{{name}}</a>
-        </li>
-      {{/destinations}}
-      </ul>
+      <h1>Choose your trail</h1>
     </div>
+  </div>
+  <div class="row">
+    {{#destinations}}
+    <div class="span4">
+      <div class="adestination">
+        <a href="/destination/{{nameUrl}}">
+           <img src="http://a.tiles.mapbox.com/v3/usedgearsale.map-y2kozuac/{{loc.lon}},{{loc.lat}},10/500x300.png" />
+           <p class="trailname">{{name}}</p>
+         </a>
+      </div>
+    </div>
+    {{/destinations}}
   </div>
 </div>
 
