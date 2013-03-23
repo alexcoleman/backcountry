@@ -200,40 +200,42 @@ app.get('/destination/:nameUrl', function (req, res, next) {
   
     },
     products: function (callback) {
-      var categories = ['Jackets', 'Trekking poles', 'Water bottles', 'Fire starters'];
-      categories.forEach(function (category, index) {
-        categories[index] = category.replace(' ', '+');
-      });
-
-      var fetch = function (category, callback) {
-        var requestOptions = {
-          url: 'http://hackathon.backcountry.com:8080/hackathon/public/search?q=' + category,
-          method: 'GET',
-          json: 'true'
-        };
-        request(requestOptions, function (err, response, body) {
-          if (!err && response.statusCode == 200) {
-            callback(null, body);
-          }
-          else {
-            callback(err);
-          }
+      app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
+        var categories = new Array();
+        destination.topGear.forEach(function (element) {
+          categories.push(element.category.replace(' ', '+'));
         });
-      }
 
-      var products = [];
-      async.map(categories, fetch, function (err, res) {
-        if(!err) {
-          res.forEach(function (element, index) {
-            var cat = [];
-            cat.push(res[index].products[0]);
-            cat.push(res[index].products[1]);
-            cat.push(res[index].products[2]);
-            cat.push(res[index].products[3]); //DO IT LIVE
-            products.push({index: index + 1, items: cat});
+        var fetch = function (category, callback) {
+          var requestOptions = {
+            url: 'http://hackathon.backcountry.com:8080/hackathon/public/search?q=' + category,
+            method: 'GET',
+            json: 'true'
+          };
+          request(requestOptions, function (err, response, body) {
+            if (!err && response.statusCode == 200) {
+              callback(null, body);
+            }
+            else {
+              callback(err);
+            }
           });
         }
-        callback(err, products);
+
+        var products = [];
+        async.map(categories, fetch, function (err, res) {
+          if(!err) {
+            res.forEach(function (element, index) {
+              var cat = [];
+              cat.push(res[index].products[0]);
+              cat.push(res[index].products[1]);
+              cat.push(res[index].products[2]);
+              cat.push(res[index].products[3]); //DO IT LIVE
+              products.push({index: index + 1, category: categories[index].replace('+', ' '), items: cat});
+            });
+          }
+          callback(err, products);
+        });
       });
     }
   },
@@ -244,7 +246,7 @@ app.get('/destination/:nameUrl', function (req, res, next) {
     context.areTopGuides = results.topGuides && results.topGuides.length>0;
     context.products = results.products;
 
-    // console.log(context.products[0].items[0])
+    console.log(context.products[0].items[0])
     
     res.render('destination', context);
   });

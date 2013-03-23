@@ -67,29 +67,16 @@
   <div class="container">
     <div class="row">
       <div class="span12">
-        <h3>Suggested Gear <a href="/">Winter</a></h3>
+        <h3>Suggested Gear <a href="/"></a></h3>
         <div class="container">
           <div class="row">
+            {{#products}}
             <div class="span3">
               <div class="category-item">
-                <a href="#" class="category-1">Jackets</a>
+                <a href="#" class="category-{{index}}">{{category}}</a>
               </div>
             </div>
-            <div class="span3">
-              <div class="category-item">
-                <a href="#" class="category-2">Trekking Poles</a>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="category-item">
-                <a href="#" class="category-3">Water Bottles</a>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="category-item">
-                <a href="#" class="category-4">Fire Starters</a>
-              </div>
-            </div>
+            {{/products}}
           </div>
         </div>
       </div>
