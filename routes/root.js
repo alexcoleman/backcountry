@@ -1,7 +1,6 @@
 var express = require('express'),
     app = EXPRESS_APP,
-    hoganEngine = require('hogan-engine'),
-    ObjectId = Schema.ObjectId;;
+    hoganEngine = require('hogan-engine');
 
 /** Home **/
 app.get('/', function (req, res, next) {
