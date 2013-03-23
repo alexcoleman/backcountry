@@ -12,20 +12,23 @@
 .suggested-guides {text-align:center; background-color:#FFF; height:230px;}
 .suggested-guides h2 {margin:0; padding:20px 0 10px; line-height:28px; font-size:18px;}
 .suggested-guides ul {margin:0;}
-.suggested-guides ul li {display:inline-block; width:100px; margin-right:20px;}
+.suggested-guides ul li {position:relative; display:inline-block; width:100px; margin-right:20px;}
+.suggested-guides ul li .hikecount {position:absolute; top:0; right:0; width:20px; height:20px; padding:4px; font-size:11px; color:#FFF; background-color:#c1c9cc; border-radius:100px;}
+.suggested-guides ul li .name {margin:0; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .suggested-guides ul li img {position:relative; top:0; width:80px; margin-bottom:5px; border-radius:80px; box-shadow:0 2px 4px rgba(0,0,0,.2); -webkit-transition:all 0.1s ease-in-out;}
 .suggested-guides ul li img:hover {position:relative; top:-5px; box-shadow:0 8px 6px rgba(0,0,0,.05);}
 .suggested-guides ul li a {display:block; padding:5px; font-size:12px; text-align:center;}
 .suggested-guides ul li a:hover {text-decoration:none;}
 .suggested-guides a {font-size:12px;}
-.suggested-guides .see-more {padding:10px 0 20px; text-decoration:underline;}
+.suggested-guides .see-more {padding:5px 0 20px; text-decoration:underline;}
+.suggested-guides ul li .adduser {margin:0;}
 
 .category-item {text-align: center;}
-.category-item a {height:60px; padding:40px 0 0; display:block; color:#FFF; opacity:.3; }
-.category-item a.category-1 {background-color:#585244;}
-.category-item a.category-2 {background-color:#9d6344;}
-.category-item a.category-3 {background-color:#6677a3;}
-.category-item a.category-4 {background-color:#48693d;}
+.category-item a {height:60px; padding:40px 0 0; display:block; color:#FFF; opacity:.3; border-radius:4px;}
+.category-item a.category-1 {background-color:#485e40;}
+.category-item a.category-2 {background-color:#485e40;}
+.category-item a.category-3 {background-color:#485e40;}
+.category-item a.category-4 {background-color:#485e40;}
 .category-item a:hover {text-decoration:none;}
 .category-item .active {opacity:1; background:#c1c9cc url('/img/caret.png') no-repeat center bottom; background-size:30px 20px;}
 

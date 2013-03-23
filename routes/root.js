@@ -43,6 +43,7 @@ app.get('/user/:username', function (req, res, next) {
             .find({$or: [{username: req.params.username}, {friendIds: {$in: [req.params.username]}}]})
             .sort('date', -1)
             .toArray(function (err, acts) {
+              
         for (var i=0; i<acts.length; i++) {
           var act = acts[i];
           if (act.friends && act.friends.length>0) {
@@ -54,9 +55,7 @@ app.get('/user/:username', function (req, res, next) {
                   shownFriends.push(friend);
                 }
               }
-            
-              var entryUser = {name: act.name, username: act.username};
-              shownFriends.push(entryUser)
+              shownFriends.push({name: act.name, username: act.username, profile_img_url: act.profile_img_url});
               act.friends = shownFriends;
             }
             act.hasFriends = true;
