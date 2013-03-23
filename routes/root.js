@@ -28,6 +28,11 @@ app.get('/user/:username', function (req, res, next) {
   
   app.db.collection('users').findOne({username: req.params.username}, function (err, user) {
     context.user = user;
+
+    user.hasReviews = function () {
+      return this.reviews.length;
+    };
+    
     res.render('user', context);
   });
 });
