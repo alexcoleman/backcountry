@@ -19,7 +19,7 @@ app.get('/', function (req, res, next) {
 });
 
 /** User **/
-app.get('/user/:id', function (req, res, next) {
+app.get('/user/:username', function (req, res, next) {
   var context = {
     css: [{href: '/css/bootstrap.min.css'}, {href: '/css/styles.css'}, {href: '/css/user.css'}],
     js: [{src: '/js/jquery.min.js'}, {src: '/js/modernizr.min.js'}, {src: '/js/bootstrap.js'}],
@@ -28,7 +28,7 @@ app.get('/user/:id', function (req, res, next) {
     }
   };
   
-  app.db.collection('users').findById(req.params.id, function (err, user) {
+  app.db.collection('users').findOne({username: req.params.username}, function (err, user) {
     context.user = user;
     res.render('user', context);
   });
