@@ -6,7 +6,9 @@
       <ul>
         {{#reviews}}
         <li>
-          <a href="/user/{{reviewerUsernam}}"><img src="{{profile_img_url}}" width="40" /> {{reviewerName}}</a> <span class="prettydate">{{prettyDate}}</span>
+          <p>
+            <a href="/user/{{reviewerUsernam}}"><img src="{{profile_img_url}}" width="40" /> {{reviewerName}}</a> <span class="prettydate">{{prettyDate}}</span>
+          </p>
           <p>{{content}}</p>
         </li>
         {{/reviews}}
