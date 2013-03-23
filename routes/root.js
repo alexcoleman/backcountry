@@ -101,7 +101,7 @@ app.get('/user/:username', function (req, res, next) {
               return d.nameUrl == hike.nameUrl;
             });
             hike.name = destination.name;
-            hike.elevationGain = destination.elevationGain;
+            hike.elevationGain = Math.abs(destination.elevationGain);
             hike.distance = destination["length"];
             hikes.push(hike);
             
@@ -110,7 +110,7 @@ app.get('/user/:username', function (req, res, next) {
           }
           
           data.sumElevationGain = sumElevationGain;
-          data.sumDistance = sumDistance;
+          data.sumDistance = Math.round(sumDistance * 10)/10;
           callback(null, data);
         });
         
@@ -290,7 +290,7 @@ app.get('/activity/:username', function (req, res, next) {
     name: "Crystal Chang",
     username: "crystalchang",
     profile_img_url: "http://www.rumgr.com/wp-content/themes/rumgr-17/img/headshot-charles.jpg",
-    date: new Date(2013, 3, 20),
+    date: new Date(2013, 3, 22),
     destinationId: "514d2b0ac39d7232f80003c2",
     destinationName: "Angel's Landing",
     destinationUrl: "angels-landing",
@@ -317,7 +317,7 @@ app.get('/activity/:username', function (req, res, next) {
   }
   
   app.db.collection('activities').insert(act, function (err, result) {
-    res.json(result);
+    res.redirect('/user/crystalchang');
   });
 });
 

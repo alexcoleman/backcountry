@@ -8,7 +8,7 @@
 .rating img {width:20px; margin-right:5px;}
 
 h2 {padding-top:60px; text-align:center; color:#FFF; font-size:28px; line-height:28px; text-shadow:0 1px 1px rgba(0,0,0,.5);}
-h3 {font-size:18px;}
+h3 {font-size:18px; color:#6e7379;}
 h3 a {font-size:11px;}
 
 .user-experience {margin:-20px 0 40px;}
@@ -39,11 +39,13 @@ h3.favoritegear {margin-top:40px;}
 .prettydate {font-size:11px; color:#c1c9cc;}
 
 #reviews {margin-top:40px;}
-#reviews img {border-radius: 100px;}
+#reviews img {border-radius: 100px; margin-right:6px;}
 #reviews ul {list-style: none; margin:0;}
 #reviews ul li {padding-top:20px; border-top:1px solid #EEE;}
 #reviews ul li:first-child {border:none; border:0;}
+#reviews a:hover {text-decoration:none;}
 #reviews .box {padding:0 20px 20px;}
+#reviews .nobodyreviewed {padding-top:20px; margin:0;}
 
 .box.primary {padding:10px 20px; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); box-shadow:0 2px 4px rgba(0,0,0,.2);}
 
