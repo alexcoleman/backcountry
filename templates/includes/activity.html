@@ -4,9 +4,12 @@
       {{#activities}}
       <li>
         Hiked <a href="/destination/{{destinationUrl}}">{{destinationName}}</a> on {{date}}</a>
-        {{#friends}}
-         <a href="/user/{{username}}">{{name}}</a>, 
-        {{/friends}}
+        {{#hasFriends}}
+          with
+          {{#friends}}
+           <a href="/user/{{username}}">{{name}}</a>, 
+          {{/friends}}
+        {{/hasFriends}}
       </li>
       {{/activities}}
     </ul>
