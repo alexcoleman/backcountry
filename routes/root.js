@@ -1,7 +1,9 @@
 var express = require('express'),
     app = EXPRESS_APP,
     hoganEngine = require('hogan-engine'),
-    _ = require("underscore");
+    _ = require('underscore'),
+    async = require('async'),
+    request = require('request');
 
 /** Home **/
 app.get('/', function (req, res, next) {
@@ -26,18 +28,32 @@ app.get('/user/:username', function (req, res, next) {
     }
   };
   
-  app.db.collection('users').findOne({username: req.params.username}, function (err, user) {
-    context.user = user;
-
-    user.hasReviews = function () {
-      return this.reviews.length;
-    };
-
-    user.hasSuggestedGear = function () {
-      return this.suggestedGear.length;
-    };
+  async.parallel({
+    user: function (callback) {
+      app.db.collection('users').findOne({username: req.params.username}, function (err, user) {
+        console.log(user)
+        user.hasReviews = user && user.reviews && user.reviews.length>1 ? true : false;
+        user.hasSuggestedGear = user.suggestedGear && user.suggestedGear.length>1 ? true : false;
     
-    res.render('user', context);
+        callback(null, user);
+      });
+    },
+    activities: function (callback) {
+      app.db.collection('activities').find({$or: [{username: req.params.username}, {$in: {friendIds: req.params.username}}]}).toArray(function (err, acts) {
+
+        console.log(acts)
+        
+        callback(null, acts);
+      });
+    }
+  },
+  function (err, results) {
+      context.user = results.user;
+
+      context.hasActivity = results.activities && results.activities.length>1 ? true : false;
+      context.activities = results.activities;
+      res.render('user', context);
+    
   });
 });
 
@@ -56,6 +72,8 @@ app.get('/destination/:nameUrl', function (req, res, next) {
      .rest(destination.participants.length-3)
      .reverse()
      .value();
+
+
     
     destination.topGuides = topGuides;
     destination.areTopGuides = function () {
@@ -67,7 +85,6 @@ app.get('/destination/:nameUrl', function (req, res, next) {
       return this.topGear.length;
     };
     context.destination = destination;
-    console.log(context)
     res.render('destination', context);
   });
   

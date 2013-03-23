@@ -6,7 +6,7 @@
       <li>
         <a href="{{url}}">
         {{brand}} - {{name}}
-        <img src="{{imgUrl}}" width=150>
+        <img src="{{imgUrl}}" class="productImg">
         </a>
       </li>
       {{/suggestedGear}}
@@ -14,6 +14,6 @@
   </div>
   {{/hasSuggestedGear}}
   {{^hasSuggestedGear}}
-  <p>Nobody has left a review yet. <a href="#">Be the first!</a></p>
+  <p>{{name}} hasn't suggested any gear yet.</p>
   {{/hasSuggestedGear}}
 {{/user}}
