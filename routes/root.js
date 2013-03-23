@@ -75,20 +75,26 @@ app.get('/user/:username', function (req, res, next) {
           return act.destinationUrl;
         });
         
-        var topHikes = new Array();
+        var orderedHikes = new Array();
         for(key in hikeCounts) {
-          topHikes.push({nameUrl: key, count: hikeCounts[key]})
+          orderedHikes.push({nameUrl: key, count: hikeCounts[key]})
+        }
+        orderedHikes = _.sortBy(orderedHikes, 'count').reverse();
+         
+        var topHikes = orderedHikes;
+        if (topHikes && topHikes.length > 3) {
+          topHikes = _.first(topHikes, 3);
         }
         data.topHikes = topHikes;
          
-        app.db.collection('destinations').find({nameUrl : {$in: _.pluck(topHikes, 'nameUrl')}}).toArray(function (err, destinations) {
+        app.db.collection('destinations').find({nameUrl : {$in: _.pluck(orderedHikes, 'nameUrl')}}).toArray(function (err, destinations) {
           // for each tophike, insert the addl data;
           var hikes = new Array();
           
           var sumElevationGain = 0;
           var sumDistance = 0;
-          for(var i=0; i<topHikes.length; i++) {
-            var hike = topHikes[i];
+          for(var i=0; i<orderedHikes.length; i++) {
+            var hike = orderedHikes[i];
             var destination = _.find(destinations, function(d) {
               return d.nameUrl == hike.nameUrl;
             });
@@ -254,7 +260,6 @@ app.get('/destinations', function (req, res, next) {
   
   app.db.collection('destinations').find().sort('name', 1).toArray(function (err, destinations) {
     context.destinations = destinations;
-    console.log(context);
     res.render('destinations', context);
   });
 });
