@@ -50,7 +50,11 @@ app.get('/destination/:nameUrl', function (req, res, next) {
      .value();
     
     destination.topGuides = topGuides;
+    destination.areTopGuides = function () {
+      return this.topGuides.length;
+    };
     context.destination = destination;
+    console.log(context)
     res.render('destination', context);
   });
   
