@@ -5,16 +5,16 @@
       <li class="box">
         <!-- <div class="container"> -->
           <div class="row">
-            <div class="span5">
-              <span class="ss-icon">signpost</span> Hiked <a href="/destination/{{destinationUrl}}">{{destinationName}}</a> <!-- {{prettyDate}} --></a>
+            <div class="span7">
+              <p><span class="ss-icon">signpost</span> Hiked <a href="/destination/{{destinationUrl}}">{{destinationName}}</a> <!-- {{prettyDate}} --></a> <span class="prettydate">{{prettyDate}}</span></p>
+                {{#hasFriends}}
+                <p class="friends">
+                  {{#friends}}
+                    <a href="/user/{{username}}"><img src="{{profile_img_url}}" width="40" /></a>
+                  {{/friends}}
+                </p>
+              {{/hasFriends}}
             </div>
-            {{#hasFriends}}
-            <div class="span2">
-              {{#friends}}
-                <a href="/user/{{username}}">{{profile_img_url}}</a>, 
-              {{/friends}}
-            </div>
-            {{/hasFriends}}
           </div>
         <!-- </div> -->
       </li>
