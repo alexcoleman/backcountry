@@ -131,6 +131,41 @@ app.get('/destination/:nameUrl', function (req, res, next) {
          .reverse()
          .value();
          
+        var categories = ['Jackets', 'Trekking poles', 'Water bottles', 'Fire starters'];
+        categories.forEach(function (category, index) {
+          categories[index] = category.replace(' ', '+');
+        });
+
+        var fetch = function (category, callback) {
+          var requestOptions = {
+            url: 'http://hackathon.backcountry.com:8080/hackathon/public/search?q=' + category,
+            method: 'GET',
+            json: 'true'
+          };
+          request(requestOptions, function (err, response, body) {
+            if (!err && response.statusCode == 200) {
+              callback(null, body);
+            }
+            else {
+              callback(err);
+            }
+          });
+        }
+
+        var products = new Array();
+        async.map(categories, fetch, function (err, res) {
+          if(!err) {
+            res.forEach(function (element, index) {
+              var cat = new Array();
+              cat.push(res[index].products[0]);
+              cat.push(res[index].products[1]);
+              cat.push(res[index].products[2]);
+              cat.push(res[index].products[3]); //DO IT LIVE
+              products.push(cat);
+            });
+          }
+        });
+         
          async.map(topGuides,
          function(item, callback) {
            app.db.collection('users').findOne({username: item.username}, function (err, user) {
