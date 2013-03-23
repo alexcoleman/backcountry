@@ -24,10 +24,14 @@ h3 a {font-size:11px;}
 .product {margin-bottom:20px;}
 
 #add-hike {background: #fff; border-radius: 2px}
+#add-hike form {margin-bottom:0;}
+#add-hike #hike-name {margin-right:10px;}
+#add-hike #add-friends {margin-right:10px;}
 h3.favoritegear {margin-top:40px;}
 
 #activity {}
 #activity ul {margin:0;}
+#activity ul li.box {background-color:rgba(255,255,255,.5) !important;}
 #activity ul li,
 #add-hike {margin-bottom:10px; padding:20px; list-style-type:none; border-bottom:1px solid rgba(0,0,0,.2);}
 #activity p {margin:0;}
@@ -37,6 +41,8 @@ h3.favoritegear {margin-top:40px;}
 #activity .friends {margin-top:10px; padding-left:30px;}
 #activity .friends img {border-radius:100px;}
 .prettydate {font-size:11px; color:#c1c9cc;}
+
+.typeahead li {padding:5px !important; margin:0 !important; border:none !important;}
 
 #reviews {margin-top:40px;}
 #reviews img {border-radius: 100px; margin-right:6px;}

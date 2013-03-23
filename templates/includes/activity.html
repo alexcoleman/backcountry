@@ -2,10 +2,10 @@
   <div id="activity">
     <h3>{{user.first_name}}'s Experience</h3>
     <div id="add-hike">
-      <form method="post" action="/add-hike">
+      <form method="post" action="/add-hike" class="form-inline">
         <input type="text" id="hike-name" name="hike-name" value="" placeholder="Hike Name" autocomplete="off" />
-        <input type="text" id="add-friends" name="add-friends" value="" placeholder="Add Friends" autocomplete="off" />
-        <input type="submit" value="Add Hike">
+        <input type="text" id="add-friends" name="add-friends" value="" placeholder="Tag Friends" autocomplete="off" />
+        <button type="submit" class="btn">Add Hike</button>
       </form>
     </div>
     <ul>
