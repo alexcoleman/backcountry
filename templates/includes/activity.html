@@ -2,16 +2,26 @@
   <div id="activity">
     <ul>
       {{#activities}}
-      <li>
-        Hiked <a href="/destination/{{destinationUrl}}">{{destinationName}}</a> on {{date}}</a>
-        {{#hasFriends}}
-          with
-          {{#friends}}
-           <a href="/user/{{username}}">{{name}}</a>, 
-          {{/friends}}
-        {{/hasFriends}}
+      <li class="box">
+        <!-- <div class="container"> -->
+          <div class="row">
+            <div class="span5">
+              <span class="ss-icon">signpost</span> Hiked <a href="/destination/{{destinationUrl}}">{{destinationName}}</a> <!-- {{prettyDate}} --></a>
+            </div>
+            {{#hasFriends}}
+            <div class="span2">
+              {{#friends}}
+                <a href="/user/{{username}}">{{profile_img_url}}</a>, 
+              {{/friends}}
+            </div>
+            {{/hasFriends}}
+          </div>
+        <!-- </div> -->
       </li>
       {{/activities}}
+      <li class="box expand">
+        Show more activity
+      </li>
     </ul>
   </div>
 {{/hasActivity}}

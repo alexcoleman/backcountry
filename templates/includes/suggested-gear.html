@@ -1,22 +1,24 @@
 {{#user}}
   {{#hasSuggestedGear}}
     {{#suggestedGear}}
-    <div class="span3 product">
-      <div class="image">
-        <a href="{{url}}">
-          <img src="{{imgUrl}}" class="productImg">
-        </a>
+      <div class="span2 product">
+        <div class="image">
+          <a href="{{url}}">
+            <img src="{{imgUrl}}" class="productImg">
+          </a>
+        </div>
+        <div class="details">
+          <p class="brand">{{brand}}</p>
+          <p class="title">{{name}}</p>
+          <p class="price">${{salePrice}}</p>
+        </div>
       </div>
-      <div class="details">
-        <p class="brand">{{brand}}</p>
-        <p class="title">{{name}}</p>
-        <p class="price">${{salePrice}}</p>
-      </div>
-    </div>
     {{/suggestedGear}}
   {{/hasSuggestedGear}}
   {{^hasSuggestedGear}}
-    <p>{{name}} hasn't suggested any gear yet.</p>
+    <div class="span4">
+      <p>{{first_name}} hasn't suggested any gear yet.</p>
+    </div>
   {{/hasSuggestedGear}}
 {{/user}}
  
