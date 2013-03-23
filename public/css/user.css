@@ -23,7 +23,7 @@ h3 a {font-size:11px;}
 
 .product {margin-bottom:20px;}
 
-h3.favoritegear {margin-top:20px;}
+h3.favoritegear {margin-top:40px;}
 
 #activity {}
 #activity ul {margin:0;}
@@ -39,3 +39,7 @@ h3.favoritegear {margin-top:20px;}
 #reviews {margin-top:40px;}
 #reviews img {border-radius: 100px;}
 #reviews ul {list-style: none; margin:0;}
+
+.box.primary {padding:10px 20px; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); box-shadow:0 2px 4px rgba(0,0,0,.2);}
+
+h4 {font-size:24px;}
