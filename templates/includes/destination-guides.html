@@ -1,12 +1,12 @@
-{{#destinationGuides}}
+{{#topGuides}}
 <div id="destination-guides">
   <ul>
-    {{#guides}}
-    <li><a href="{{url}}"><img src="{{imageUrl}}" /> {{username}}</a></li>
-    {{/guides}}
+    {{#topGuides}}
+    <li><a href="/user/{{nameId}}"><img src="{{profile_img_url}}" /> {{name}}</a></li>
+    {{/topGuides}}
   </ul>
 </div>
-{{/destinationGuides}}
-{{^destinationGuides}}
+{{/topGuides}}
+{{^topGuides}}
 <p>Nobody has hiked this yet. <a href="#">Be the first!</a></p>
-{{/destinationGuides}}
+{{/topGuides}}

@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="span12">
-        <h1>Turtlehead Peak</h1>
+        <h1>{{destination.name}}</h1>
         <h2><a href="/locatin/las-vegas">Las Vegas, NV</a></h2>
       </div>
     </div>
@@ -39,7 +39,7 @@
             </li>
           </ul>
           <p><a href="#">19 more experienced guides...</a></p>
-          <!-- {{> includes/destination-guides.html}} -->
+          {{#destination}}{{> includes/destination-guides.html}}{{/destination}}
         </div>
       </div>
     </div>
