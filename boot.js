@@ -3,9 +3,15 @@ require('./config/env');
 APP_ROOT = __dirname;
 
 var express = require('express'),
-    hoganEngine = require('hogan-engine');
+    config = require('config'),
+    fs = require('fs'),
+    hoganEngine = require('hogan-engine'),
+    mongo= require('mongoskin');
 
-var app = express();
+var app = module.exports = express();
+app.db_url = 'mongodb://rumgr:egaragesale@dharma.mongohq.com:10029/sherpa';
+app.db = mongo.db(app.db_url+'?auto_reconnect=true')
+
 
 EXPRESS_APP = app;
 
