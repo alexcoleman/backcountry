@@ -52,8 +52,8 @@ app.get('/user/:username', function (req, res, next) {
             
             var entryUser = {name: act.name, username: act.username};
             shownFriends.push(entryUser)
+            act.friends = shownFriends;
           }
-          act.friends = shownFriends;
         }
         callback(null, acts);
       });
