@@ -78,19 +78,20 @@ app.get('/destination/:nameUrl', function (req, res, next) {
   };
   
   app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
-    var topGuides = _.chain(destination.participants)
-     .sortBy(function(p) {return p.count})
-     .rest(destination.participants.length-3)
-     .reverse()
-     .value();
-
-
+    if (destination.participants) {
+      var topGuides = _.chain(destination.participants)
+       .sortBy(function(p) {return p.count})
+       .rest(destination.participants.length-3)
+       .reverse()
+       .value();
     
-    destination.topGuides = topGuides;
+      destination.topGuides = topGuides;
+      destination.addlGuides = destination.participants.length - destination.topGuides.length;
+    }
+    
     destination.areTopGuides = function () {
       return this.topGuides.length;
     };
-    destination.addlGuides = destination.participants.length - destination.topGuides.length;
     
     destination.seasonalGear = function () {
       return this.topGear.length;
