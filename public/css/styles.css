@@ -11,7 +11,7 @@ a {color:#6e7379;}
 
 .caret {position:absolute; top:-7px; right:60px; width:12px; height:7px; overflow:hidden; border:none;}
 .caret .caret-outer {position:absolute; top:0; left:0; display:inline-block; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #eff1eb;}
-.caret .caret-inner {position:absolute; top: 1px; left: 1px; display: inline-block; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid #f7f7f7;}
+.caret .caret-inner {position:absolute; top: 1px; left: 1px; display: inline-block; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid #fff;}
 
 .box {padding:40px; background-color:#FFF; border-radius:2px; border-bottom:1px solid #e7e7e7;}
 

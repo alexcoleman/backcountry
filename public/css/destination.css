@@ -13,7 +13,7 @@
 .suggested-guides h2 {margin:0; padding:20px 0 10px; line-height:28px; font-size:18px;}
 .suggested-guides ul {margin:0;}
 .suggested-guides ul li {display:inline-block; width:100px; margin-right:20px;}
-.suggested-guides ul li img {position:relative; top:0; width:80px; border-radius:80px; box-shadow:0 2px 4px rgba(0,0,0,.2); -webkit-transition:all 0.1s ease-in-out;}
+.suggested-guides ul li img {position:relative; top:0; width:80px; margin-bottom:5px; border-radius:80px; box-shadow:0 2px 4px rgba(0,0,0,.2); -webkit-transition:all 0.1s ease-in-out;}
 .suggested-guides ul li img:hover {position:relative; top:-5px; box-shadow:0 8px 6px rgba(0,0,0,.05);}
 .suggested-guides ul li a {display:block; padding:5px; font-size:12px; text-align:center;}
 .suggested-guides a {font-size:12px;}
@@ -32,6 +32,7 @@
 
 .category-item {height:100px; background-color:#e0e4e5}
 .category-item a {height:100px; display:block; color:#FFF;}
+.category-item.active {background-color:#c1c9cc;}
 
 .category-products {margin-top:40px;}
 
