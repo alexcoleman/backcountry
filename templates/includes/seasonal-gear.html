@@ -1,0 +1,25 @@
+{{#seasonalGear}}
+<div id="seasonalGear">
+  <ul>
+    {{#topGear}}
+    <li><a href="#" class="{{season}}">{{season}}</a></li>
+    {{/topGear}}
+  </ul>
+
+  {{#topGear}}
+  <div class="{{season}}">
+    {{#categories}}
+    <h2>{{name}}</h2>
+    <ul>
+      {{#items}}
+      <li><a href="{{url}}"><img src="{{imageUrl}}" /></a></li>
+      {{/items}}
+    </ul>
+    {{/categories}}
+  </div>
+  {{/topGear}}
+</div>
+{{/seasonalGear}}
+{{^seasonalGear}}
+<p>No seasonal gear added for this hike. <a href="#">Add Some!</a></p>
+{{/seasonalGear}}
