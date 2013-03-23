@@ -43,7 +43,7 @@ app.get('/destination/:id', function (req, res, next) {
   
   app.db.collection('destinations').findById(req.params.id, function (err, destination) {
     context.destination = destination;
-    res.render('destination', destination);
+    res.render('destination', context);
   });
   
 
