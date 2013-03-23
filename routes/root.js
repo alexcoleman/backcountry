@@ -1,8 +1,6 @@
 var express = require('express'),
     app = EXPRESS_APP,
     hoganEngine = require('hogan-engine'),
-    mongoose = require('mongoose'),
-    Schema = mongoose.Types,
     ObjectId = Schema.ObjectId;;
 
 /** Home **/
