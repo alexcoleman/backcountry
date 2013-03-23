@@ -282,7 +282,6 @@ app.get('/activity', function (req, res, next) {
 
 app.post('/activity/:', function (req, res, next) {
   var act = {};
-  act = 
   
 })
 
