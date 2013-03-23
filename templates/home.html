@@ -1,5 +1,25 @@
 {{> includes/header.html}}
 
-<h1>Hello world</h1>
+<div class="find">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h1>Where are you planning to hike?</h1>
+        <select>
+          <option selected disabled>---</option>
+          <option>Las Vegas, NV</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{> includes/footer.html}}
+
+<script>
+$(document).ready(function(){
+  $('select').change(function() {
+    window.location = '/destination/1';
+  });
+});
+</script>
