@@ -66,6 +66,7 @@
             </div>
           </div>
         </div>
+        {{#hasSuggestedGear}}
         <div class="row">
           <div class="span4">
             <h3 class="favoritegear">Favorite Gear <a href="http://www.backcountry.com">Via Backcountry</a></h3>
@@ -74,6 +75,7 @@
         <div class="row">
           {{> includes/suggested-gear.html}}
         </div>
+        {{/hasSuggestedGear}}
       </div>
     </div>
   </div>
