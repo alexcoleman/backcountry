@@ -1,0 +1,15 @@
+{{#stats}}
+  <div id="top-hikes">
+    Top Hikes
+    <ul>
+    {{#topHikes}}
+    <li><a href="/destination/{{nameUrl}}">{{name}} ({{count}})</a></li>
+    {{/topHikes}}
+    </ul>
+  </div>
+
+  <div>
+    Total miles hiked: {{sumDistance}}
+    Total elevation gain: {{sumElevationGain}}
+  </div>
+{{/stats}}

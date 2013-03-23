@@ -38,7 +38,7 @@ app.get('/user/:username', function (req, res, next) {
         callback(null, user);
       });
     },
-    activities: function (callback) {
+    stats: function (callback) {
       app.db.collection('activities')
             .find({$or: [{username: req.params.username}, {friendIds: {$in: [req.params.username]}}]})
             .sort('date', -1)
@@ -46,6 +46,7 @@ app.get('/user/:username', function (req, res, next) {
               
         for (var i=0; i<acts.length; i++) {
           var act = acts[i];
+          // Fill out data for activity feed
           if (act.friends && act.friends.length>0) {
             if ( !(act.username == req.params.username) ) {
               var shownFriends = new Array();
@@ -61,13 +62,57 @@ app.get('/user/:username', function (req, res, next) {
             act.hasFriends = true;
           }
         }
-        callback(null, acts);
+        
+        var data = {};
+        data.activities = acts;
+        data.topMonths = _.countBy(acts, function(act) {
+          return act.date.getMonth();
+        });
+        data.topYears = _.countBy(acts, function(act) {
+          return act.date.getFullYear();
+        });
+        var hikeCounts = _.countBy(acts, function(act) {
+          return act.destinationUrl;
+        });
+        
+        var topHikes = new Array();
+        for(key in hikeCounts) {
+          topHikes.push({nameUrl: key, count: hikeCounts[key]})
+        }
+        data.topHikes = topHikes;
+         
+        app.db.collection('destinations').find({nameUrl : {$in: _.pluck(topHikes, 'nameUrl')}}).toArray(function (err, destinations) {
+          // for each tophike, insert the addl data;
+          var hikes = new Array();
+          
+          var sumElevationGain = 0;
+          var sumDistance = 0;
+          for(var i=0; i<topHikes.length; i++) {
+            var hike = topHikes[i];
+            var destination = _.find(destinations, function(d) {
+              return d.nameUrl == hike.nameUrl;
+            });
+            hike.name = destination.name;
+            hike.elevationGain = destination.elevationGain;
+            hike.distance = destination["length"];
+            hikes.push(hike);
+            
+            sumElevationGain += hike.elevationGain * hike.count;
+            sumDistance += hike.distance * hike.count;
+          }
+          
+          data.sumElevationGain = sumElevationGain;
+          data.sumDistance = sumDistance;
+          callback(null, data);
+        });
+        
       });
     }
   },
   function (err, results) {
       context.user = results.user;
-      context.activities = results.activities;
+      context.stats = results.stats;
+      context.activities = results.stats.activities;
       context.hasActivity = context.activities && context.activities.length>0 ? true : false;
       context.prettyDate = function () {
         return howlong.ago(this.date);
@@ -85,8 +130,6 @@ app.get('/destination/:nameUrl', function (req, res, next) {
       title: "Destination page"
     }
   };
-  
-
   
   async.parallel({
     destination: function (callback) {
