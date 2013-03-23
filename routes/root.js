@@ -53,6 +53,11 @@ app.get('/destination/:nameUrl', function (req, res, next) {
     destination.areTopGuides = function () {
       return this.topGuides.length;
     };
+    destination.addlGuides = destination.participants.length - destination.topGuides.length;
+    
+    destination.seasonalGear = function () {
+      return this.topGear.length;
+    };
     context.destination = destination;
     console.log(context)
     res.render('destination', context);
