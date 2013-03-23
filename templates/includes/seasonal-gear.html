@@ -1,14 +1,28 @@
 {{#seasonalGear}}
 <div id="seasonalGear">
   <ul>
-    <li><a href="#" class="spring">Spring</a></li>
+    {{#topGear}}
+    <li><a href="#" class="{{season}}">{{season}}</a></li>
+    {{/topGear}}
+    <!-- <li><a href="#" class="spring">Spring</a></li>
     <li><a href="#" class="summer">Summer</a></li>
     <li><a href="#" class="fall">Fall</a></li>
     <li><a href="#" class="winter">Winter</a></li>
-    <li><a href="#" class="all-season">All Season</a></li>
+    <li><a href="#" class="all-season">All Season</a></li> -->
   </ul>
 
-  <div id="items"></div>
+  {{#topGear}}
+  <div class="{{season}}">
+    {{#categories}}
+    <h2>{{name}}</h2>
+    <ul>
+      {{#items}}
+      <li><a href="{{url}}"><img src="{{imageUrl}}" /></a></li>
+      {{/items}}
+    </ul>
+    {{/categories}}
+  </div>
+  {{/topGear}}
 </div>
 {{/seasonalGear}}
 {{^seasonalGear}}
