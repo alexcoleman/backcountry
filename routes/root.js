@@ -280,11 +280,42 @@ app.get('/activity', function (req, res, next) {
   res.render('form', context);
 })
 
-app.post('/activity/:', function (req, res, next) {
-  var act = {};
+app.get('/activity/:username', function (req, res, next) {
+  var act = {
+    userId: "514d2303a12e6b1a017ecf2a",
+    name: "Crystal Chang",
+    username: "crystalchang",
+    profile_img_url: "http://www.rumgr.com/wp-content/themes/rumgr-17/img/headshot-charles.jpg",
+    date: new Date(2013, 3, 20),
+    destinationId: "514d2b0ac39d7232f80003c2",
+    destinationName: "Angel's Landing",
+    destinationUrl: "angels-landing",
+    friendIds: [
+      "dylanbathurst", "charleswatkins", "alexcoleman"
+    ],
+    friends: [
+    {
+      name: "Charles Watkins",
+      username: "charleswatkins",
+      profile_img_url: "http://www.rumgr.com/wp-content/themes/rumgr-17/img/headshot-charles.jpg"
+    },
+      {
+        name: "Dylan Bathurst",
+        username: "dylanbathurst",
+  profile_img_url: "http://localhost:9000/img/profile-dylan.jpg"
+      },
+      {
+        name: "Alex Coleman",
+        username: "alexcoleman",
+        profile_img_url: "https://si0.twimg.com/profile_images/2726845198/d459e06c108e537438bb3a5793be7b07.png"
+      }
+    ]
+  }
   
-})
-
+  app.db.collection('activities').insert(act, function (err, result) {
+    res.json(result);
+  });
+});
 
 app.get('/api/search/destination/:term', function (req, res, next) {
   var context = {
@@ -293,5 +324,4 @@ app.get('/api/search/destination/:term', function (req, res, next) {
     }
   };
 
-  res.render('destination', context);
 });
