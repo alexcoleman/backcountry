@@ -92,21 +92,6 @@ app.get('/destination/:nameUrl', function (req, res, next) {
   async.parallel({
     destination: function (callback) {
       app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
-        if (destination.participants) {
-          var topGuides = _.chain(destination.participants)
-           .sortBy(function(p) {return p.count})
-           .rest(destination.participants.length-3)
-           .reverse()
-           .value();
-    
-          destination.topGuides = topGuides;
-          destination.addlGuides = destination.participants.length - destination.topGuides.length;
-        }
-    
-        destination.areTopGuides = function () {
-          return this.topGuides.length;
-        };
-    
         destination.seasonalGear = function () {
           return this.topGear.length;
         };
@@ -114,24 +99,58 @@ app.get('/destination/:nameUrl', function (req, res, next) {
       });
   
     },
-    guides: function (callback) {
+    topGuides: function (callback) {
       app.db.collection('activities').find({destinationUrl: req.params.nameUrl}).toArray(function (err, acts) {
         var counts = {};
         for (var i=0; i<acts.length; i++) {
           var act = acts[i];
-          if (!counts[act]) {
+          if (!counts[act.username]) {
             counts[act.username] = {name: act.name, username: act.username, count:0}
           }
           counts[act.username].count += 1;
+          
+          if (act.friends && act.friends.length>0) {
+            for (var j=0; j<act.friends.length; j++) {
+              var friend = act.friends[j];
+              if (!counts[friend.username]) {
+                counts[friend.username] = {name: friend.name, username: friend.username, count:0}
+              }
+              counts[friend.username].count += 1;
+            }
+          }
         }
-        callback(err, acts);
+        
+        var guides = new Array();
+        for(count in counts) {
+          guides.push(counts[count]);
+        }
+        
+        var topGuides = _.chain(guides)
+         .sortBy(function(p) {return p.count})
+         .rest(guides.length-3)
+         .reverse()
+         .value();
+         
+         async.map(topGuides,
+         function(item, callback) {
+           app.db.collection('users').findOne({username: item.username}, function (err, user) {
+             item.profile_img_url = user.profile_img_url;
+             callback (err, item);
+           });
+         }, 
+         function(err, results) {
+           callback(err, results);
+         })
       });
   
     }
   },
   function (err, results) {
     context.destination = results.destination;
-    context.guides = results.guides;
+    context.topGuides = results.topGuides;
+    context.addlGuides = results.topGuides && results.topGuides.length - results.topGuides.length;
+    context.areTopGuides = results.topGuides && results.topGuides.length>0;
+    
     res.render('destination', context);
   });
 
