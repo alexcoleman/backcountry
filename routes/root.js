@@ -44,14 +44,17 @@ app.get('/destination/:nameUrl', function (req, res, next) {
   
   app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
     var topGuides = _.chain(destination.participants)
-     .sortBy(destination.participants, function(p) {return p.count})
-     .rest(destination.participants, destination.participants.length-3)
+     .sortBy(function(p) {return p.count})
+     .rest(destination.participants.length-3)
      .reverse()
      .value();
     
     destination.topGuides = topGuides;
+    destination.areTopGuides = function () {
+      return this.topGuides.length;
+    };
     context.destination = destination;
-    console.log(destination)
+    console.log(context)
     res.render('destination', context);
   });
   
