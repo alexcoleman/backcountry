@@ -38,7 +38,7 @@ app.get('/user/:username', function (req, res, next) {
       });
     },
     activities: function (callback) {
-      app.db.collection('activities').find({$or: [{username: req.params.username}, {friendIds: {$in: [req.params.username]}}]}).toArray(function (err, acts) {
+      app.db.collection('activities').find({$or: [{username: req.params.username}, {friendIds: {$in: [req.params.username]}}]}).sort('date', -1).toArray(function (err, acts) {
         for (var i=0; i<acts.length; i++) {
           var act = acts[i];
           if ( !(act.username == req.params.username) && act.friends && act.friends.length>0) {
