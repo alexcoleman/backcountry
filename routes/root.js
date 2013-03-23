@@ -126,7 +126,9 @@ app.get('/user/:username', function (req, res, next) {
         return howlong.ago(this.date);
       };
 
-      console.log(context.stats)
+      context.isCrystal = function () {
+        return this.user.username === 'crystalchang';
+      };
 
       res.render('user', context);
     

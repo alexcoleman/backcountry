@@ -39,7 +39,7 @@ function setupFriendAutoComplete() {
   $('#add-friends').typeahead({
     source: friendnames,
     updater: function (item) {
-      $('#add-hike').append('<a href="#">' + item + '<span> x </span></a>')
+      $('#add-hike').append('<a href="#">' + item + '<span> x </span></a>');
     }
   });
 }

@@ -1,13 +1,15 @@
 {{#hasActivity}}
   <div id="activity">
     <h3>{{user.first_name}}'s Experience</h3>
+    {{#isCrystal}}
     <div id="add-hike">
-      <form method="post" action="/add-hike">
-        <input type="text" id="hike-name" name="hike-name" value="" placeholder="Hike Name" autocomplete="off" />
-        <input type="text" id="add-friends" name="add-friends" value="" placeholder="Add Friends" autocomplete="off" />
+      <form method="post" action="/activity/post">
+        <input type="text" id="hike-name" name="hike-name" value="" placeholder="Hike Name" />
+        <input type="text" id="add-friends" name="add-friends" value="" placeholder="Add Friends" />
         <input type="submit" value="Add Hike">
       </form>
     </div>
+    {{/isCrystal}}
     <ul>
       {{#activities}}
       <li class="box">
