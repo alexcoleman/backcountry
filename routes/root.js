@@ -110,7 +110,7 @@ app.get('/user/:username', function (req, res, next) {
           }
           
           data.sumElevationGain = sumElevationGain;
-          data.sumDistance = sumDistance;
+          data.sumDistance = Math.round(sumDistance * 10)/10;
           callback(null, data);
         });
         
@@ -127,6 +127,9 @@ app.get('/user/:username', function (req, res, next) {
       };
 
       context.page.title = results.user.first_name +' '+results.user.last_name;
+      context.isCrystal = function () {
+        return this.user.username === 'crystalchang';
+      };
       res.render('user', context);
     
   });
