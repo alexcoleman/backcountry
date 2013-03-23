@@ -45,18 +45,21 @@ app.get('/user/:username', function (req, res, next) {
             .toArray(function (err, acts) {
         for (var i=0; i<acts.length; i++) {
           var act = acts[i];
-          if ( !(act.username == req.params.username) && act.friends && act.friends.length>0) {
-            var shownFriends = new Array();
-            for (var j=0; j<act.friends.length; j++) {
-              var friend = act.friends[j];
-              if ( !(friend.username == req.params.username) ) {
-                shownFriends.push(friend);
+          if (act.friends && act.friends.length>0) {
+            if ( !(act.username == req.params.username) ) {
+              var shownFriends = new Array();
+              for (var j=0; j<act.friends.length; j++) {
+                var friend = act.friends[j];
+                if ( !(friend.username == req.params.username) ) {
+                  shownFriends.push(friend);
+                }
               }
-            }
             
-            var entryUser = {name: act.name, username: act.username};
-            shownFriends.push(entryUser)
-            act.friends = shownFriends;
+              var entryUser = {name: act.name, username: act.username};
+              shownFriends.push(entryUser)
+              act.friends = shownFriends;
+            }
+            act.hasFriends = true;
           }
         }
         callback(null, acts);
@@ -84,29 +87,53 @@ app.get('/destination/:nameUrl', function (req, res, next) {
     }
   };
   
-  app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
-    if (destination.participants) {
-      var topGuides = _.chain(destination.participants)
-       .sortBy(function(p) {return p.count})
-       .rest(destination.participants.length-3)
-       .reverse()
-       .value();
+
+  
+  async.parallel({
+    destination: function (callback) {
+      app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
+        if (destination.participants) {
+          var topGuides = _.chain(destination.participants)
+           .sortBy(function(p) {return p.count})
+           .rest(destination.participants.length-3)
+           .reverse()
+           .value();
     
-      destination.topGuides = topGuides;
-      destination.addlGuides = destination.participants.length - destination.topGuides.length;
+          destination.topGuides = topGuides;
+          destination.addlGuides = destination.participants.length - destination.topGuides.length;
+        }
+    
+        destination.areTopGuides = function () {
+          return this.topGuides.length;
+        };
+    
+        destination.seasonalGear = function () {
+          return this.topGear.length;
+        };
+        callback(err, destination);
+      });
+  
+    },
+    guides: function (callback) {
+      app.db.collection('activities').find({destinationUrl: req.params.nameUrl}).toArray(function (err, acts) {
+        var counts = {};
+        for (var i=0; i<acts.length; i++) {
+          var act = acts[i];
+          if (!counts[act]) {
+            counts[act.username] = {name: act.name, username: act.username, count:0}
+          }
+          counts[act.username].count += 1;
+        }
+        callback(err, acts);
+      });
+  
     }
-    
-    destination.areTopGuides = function () {
-      return this.topGuides.length;
-    };
-    
-    destination.seasonalGear = function () {
-      return this.topGear.length;
-    };
-    context.destination = destination;
+  },
+  function (err, results) {
+    context.destination = results.destination;
+    context.guides = results.guides;
     res.render('destination', context);
   });
-  
 
 });
 
