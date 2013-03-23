@@ -1,5 +1,56 @@
 {{> includes/header.html}}
 
-<h1>Destination page</h1>
-{{destination.gear.spring}}
+<div class="destination">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h1>Turtlehead Peak</h1>
+        <h2><a href="/locatin/las-vegas">Las Vegas, NV</a></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="hikeinfo">
+    <div class="row">
+      <div class="span4">
+        <div class="mapWrapper">
+          <div id="map">
+            <!-- Map -->
+          </div>
+        </div>
+      </div>
+      <div class="span8">
+        <div class="suggested-guides">
+          <p>Suggested Guides</p>
+          <ul>
+            <li><a href="/user/1">Dylan Bathurst</a></li>
+            <li><a href="/user/2">Alex Coleman</a></li>
+            <li><a href="/user/3">Crystal Chang</a></li>
+            <li><a href="/user/4">Charles Watkins</a></li>
+          </ul>
+          {{> includes/destination-guides.html}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="meta">
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <h3>Spot stats</h3>
+        <p>Trail distance</p>
+        <p>Time on trail</p>
+      </div>
+      <div class="span6">
+        <h3>Suggested Gear</h3>
+        {{> includes/seasonal-gear.html}}
+      </div>
+    </div>
+  </div>
+</div>
+
 {{> includes/footer.html}}

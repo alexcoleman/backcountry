@@ -9,11 +9,30 @@
 
   <!-- <link rel="icon" type="image/ico" href="/img/favicon.ico"> -->
   
-  <link rel="stylesheet" type="text/css" media="all" href="/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="/css/styles.css" />
+  {{#css}}
+  <link rel="stylesheet" type="text/css" media="all" href="{{href}}" />
+  {{/css}}
 
   <link rel="stylesheet" href="/webfonts/ss-pika/ss-pika.css" />
 
+  <script type="text/javascript" src="//use.typekit.net/ook3exp.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
 </head>
 <body>
-  
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="span8">
+        <div id="logo">
+          <a href="/">Sherpa</a>
+        </div>
+      </div>
+      <div class="span4">
+        <div id="user">
+          <img src="https://si0.twimg.com/profile_images/2726845198/d459e06c108e537438bb3a5793be7b07_normal.png" width="18" height="18" class="user-avatar"><a href="/user/1">Howdy, alexcoleman!</a>
+        </div>
+    </div>
+  </div>
+</header>

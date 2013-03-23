@@ -1,4 +1,25 @@
-body {}
+body {color:#253744; background-color:#f7f7f7; font-family:"kulturista-web";}
+h1, h2, h3, h4, h5, h5 {font-weight:500;}
+
+h1 {font-size:28px; line-height:28px;}
+h2 {margin:0; padding:0; font-size:12px; font-weight:500; line-height:12px;}
+h3 {font-size:20px; font-weight:500;}
+
+a {color:#6e7379;}
+
+.container {margin:auto;}
+
+header {height:60px; background-color:#FFF; box-shadow:0 2px 4px rgba(0,0,0,.2); z-index:1000;}
+header #logo {padding:26px 0 0; color:#6e7379; font-family:"delittle-chromatic-inlay"; font-size:22px;}
+header #logo a:hover {text-decoration:none;}
+header #user {padding:20px 0 0; text-align:right; font-size:12px;}
+header #user img {margin-right:10px; border-radius:2px;}
+
+/*destination page*/
+.destination {margin:30px 0 0;}
+.hikeinfo {margin:40px 0; padding:40px 0; background-color:#65777f; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); border-radius:2px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
+.hikeinfo .mapWrapper {padding:0 40px;}
+.hikeinfo #map {width:220px; height:220px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
 
 @media (min-width: 768px) and (max-width: 979px) { 
 

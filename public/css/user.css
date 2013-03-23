@@ -1,0 +1,10 @@
+.cover {height:200px; background-color:#EEE; background:url('/img/bg-user.jpg') top no-repeat; background-size:cover;}
+.user-info {margin-top:-80px;}
+.user-info {padding:10px; background-color:#65777f; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); border-radius:100px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
+.user-photo img {box-shadow:0 2px 4px rgba(0,0,0,.2); border-radius:100px;}
+
+/*.user-essentials {text-align:center;}*/
+.rating {margin-top:10px;}
+.rating img {width:20px; margin-right:5px;}
+
+h3 {text-align:center; font-size:16px;}
