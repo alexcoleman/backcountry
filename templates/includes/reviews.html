@@ -1,7 +1,6 @@
 {{#user}}
-<div id="reviews">
   {{#hasReviews}}
-  
+  <div id="reviews">
     <h3>Reviews for {{first_name}}</h3>
     <ul>
       {{#reviews}}
@@ -11,10 +10,12 @@
       </li>
       {{/reviews}}
     </ul>
+  </div>
   {{/hasReviews}}
   {{^hasReviews}}
-  <h3>Reviews for {{first_name}}</h3>
-  <p>Nobody has left a review yet. <a href="#">Be the first!</a></p>
+    <div id="reviews">
+      <h3>Reviews</h3>
+      <p>Nobody has left a review for {{first_name}} yet. <a href="/user/addreview">Be the first</a></p>
+    </div>
   {{/hasReviews}}
-</div>
 {{/user}}
