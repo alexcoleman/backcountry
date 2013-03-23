@@ -43,6 +43,7 @@ app.get('/user/:username', function (req, res, next) {
             .find({$or: [{username: req.params.username}, {friendIds: {$in: [req.params.username]}}]})
             .sort('date', -1)
             .toArray(function (err, acts) {
+              
         for (var i=0; i<acts.length; i++) {
           var act = acts[i];
           if (act.friends && act.friends.length>0) {
@@ -54,9 +55,7 @@ app.get('/user/:username', function (req, res, next) {
                   shownFriends.push(friend);
                 }
               }
-            
-              var entryUser = {name: act.name, username: act.username};
-              shownFriends.push(entryUser)
+              shownFriends.push({name: act.name, username: act.username, profile_img_url: act.profile_img_url});
               act.friends = shownFriends;
             }
             act.hasFriends = true;
@@ -119,53 +118,20 @@ app.get('/destination/:nameUrl', function (req, res, next) {
             }
           }
         }
-        
         var guides = new Array();
         for(count in counts) {
           guides.push(counts[count]);
         }
-        
+
         var topGuides = _.chain(guides)
          .sortBy(function(p) {return p.count})
-         .rest(guides.length-3)
          .reverse()
          .value();
          
-        var categories = ['Jackets', 'Trekking poles', 'Water bottles', 'Fire starters'];
-        categories.forEach(function (category, index) {
-          categories[index] = category.replace(' ', '+');
-        });
-
-        var fetch = function (category, callback) {
-          var requestOptions = {
-            url: 'http://hackathon.backcountry.com:8080/hackathon/public/search?q=' + category,
-            method: 'GET',
-            json: 'true'
-          };
-          request(requestOptions, function (err, response, body) {
-            if (!err && response.statusCode == 200) {
-              callback(null, body);
-            }
-            else {
-              callback(err);
-            }
-          });
+        if (topGuides && topGuides.length > 3) {
+          topGuides = _.first(topGuides, 3);
         }
-
-        var products = new Array();
-        async.map(categories, fetch, function (err, res) {
-          if(!err) {
-            res.forEach(function (element, index) {
-              var cat = new Array();
-              cat.push(res[index].products[0]);
-              cat.push(res[index].products[1]);
-              cat.push(res[index].products[2]);
-              cat.push(res[index].products[3]); //DO IT LIVE
-              products.push(cat);
-            });
-          }
-        });
-         
+        
          async.map(topGuides,
          function(item, callback) {
            app.db.collection('users').findOne({username: item.username}, function (err, user) {
@@ -178,6 +144,43 @@ app.get('/destination/:nameUrl', function (req, res, next) {
          })
       });
   
+    },
+    products: function (callback) {
+      var categories = ['Jackets', 'Trekking poles', 'Water bottles', 'Fire starters'];
+      categories.forEach(function (category, index) {
+        categories[index] = category.replace(' ', '+');
+      });
+
+      var fetch = function (category, callback) {
+        var requestOptions = {
+          url: 'http://hackathon.backcountry.com:8080/hackathon/public/search?q=' + category,
+          method: 'GET',
+          json: 'true'
+        };
+        request(requestOptions, function (err, response, body) {
+          if (!err && response.statusCode == 200) {
+            callback(null, body);
+          }
+          else {
+            callback(err);
+          }
+        });
+      }
+
+      var products = new Array();
+      async.map(categories, fetch, function (err, res) {
+        if(!err) {
+          res.forEach(function (element, index) {
+            var cat = new Array();
+            cat.push(res[index].products[0]);
+            cat.push(res[index].products[1]);
+            cat.push(res[index].products[2]);
+            cat.push(res[index].products[3]); //DO IT LIVE
+            products.push(cat);
+          });
+        }
+        callback(err, products);
+      });
     }
   },
   function (err, results) {
