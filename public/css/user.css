@@ -15,7 +15,15 @@ h3 a {font-size:11px;}
 .bookHike {display:block; padding:10px 0; margin:10px 0 0;}
 .bookHike:hover {text-decoration: none; color:#fff;}
 
+.user-stats {margin:10px 0 40px 0; padding:20px 0; text-align:center;}
+.user-stats p {color:#6e7379;}
+.user-stats a {color:#253744;}
+.user-stats .tophike {border-right:1px solid rgba(0,0,0,.05);}
+.user-stats .totalmiles {border-right:1px solid rgba(0,0,0,.05);}
+
 .product {margin-bottom:20px;}
+
+h3.favoritegear {margin-top:20px;}
 
 #activity {}
 #activity ul {margin:0;}
