@@ -17,9 +17,12 @@ h3 a {font-size:11px;}
 
 .product {margin-bottom:20px;}
 
+#add-hike {background: #fff; border-radius: 2px}
+
 #activity {}
 #activity ul {margin:0;}
-#activity ul li {margin-bottom:10px; padding:20px; list-style-type:none; border-bottom:1px solid rgba(0,0,0,.2);}
+#activity ul li,
+#add-hike {margin-bottom:10px; padding:20px; list-style-type:none; border-bottom:1px solid rgba(0,0,0,.2);}
 #activity p {margin:0;}
 #activity .ss-icon {padding-right:10px; color:#65777f;}
 #activity .expand,

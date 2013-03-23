@@ -23,7 +23,7 @@ app.get('/', function (req, res, next) {
 app.get('/user/:username', function (req, res, next) {
   var context = {
     css: [{href: '/css/bootstrap.min.css'}, {href: '/css/styles.css'}, {href: '/css/user.css'}],
-    js: [{src: '/js/jquery.min.js'}, {src: '/js/modernizr.min.js'}, {src: '/js/bootstrap.js'}],
+    js: [{src: '/js/jquery.min.js'}, {src: '/js/modernizr.min.js'}, {src: '/js/bootstrap.js'}, {src: '/js/user.js'}],
     page: {
       title: "User page"
     }
