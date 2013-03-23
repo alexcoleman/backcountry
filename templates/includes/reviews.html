@@ -2,20 +2,26 @@
   {{#hasReviews}}
   <div id="reviews">
     <h3>Reviews for {{first_name}}</h3>
-    <ul>
-      {{#reviews}}
-      <li>
-        <a href="/user/{{reviewerUsernam}}"><img src="{{profile_img_url}}" width="40" /> {{reviewerName}}</a> <span class="prettydate">{{prettyDate}}</span>
-        <p>{{content}}</p>
-      </li>
-      {{/reviews}}
-    </ul>
+    <div class="box">
+      <ul>
+        {{#reviews}}
+        <li>
+          <p>
+            <a href="/user/{{reviewerUsernam}}"><img src="{{profile_img_url}}" width="40" /> {{reviewerName}}</a> <span class="prettydate">{{prettyDate}}</span>
+          </p>
+          <p>{{content}}</p>
+        </li>
+        {{/reviews}}
+      </ul>
+    </div>
   </div>
   {{/hasReviews}}
   {{^hasReviews}}
     <div id="reviews">
       <h3>Reviews</h3>
-      <p>Nobody has left a review for {{first_name}} yet. <a href="/user/addreview">Be the first</a></p>
+      <div class="box">
+        <p>Nobody has left a review for {{first_name}} yet. <a href="/user/addreview">Be the first</a></p>
+      </div>
     </div>
   {{/hasReviews}}
 {{/user}}

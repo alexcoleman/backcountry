@@ -27,6 +27,7 @@ header #user img {margin-right:10px; border-radius:2px;}
 .popular-products h2 {margin-top:20px;}
 .popular-products .product {margin-bottom:20px;}
 .popular-products .product:hover {box-shadow:0 0 20px rgba(0,0,0,0.05);}
+.product .image {padding:10px; background-color:#FFF;}
 
 .details {min-height:42px; margin-top:0px; padding:10px; background-color:#FFF; border-bottom:1px solid rgba(0,0,0,.2);}
 .details p {margin:0; text-transform:capitalize;}

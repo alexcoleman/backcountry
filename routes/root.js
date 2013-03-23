@@ -85,7 +85,9 @@ app.get('/user/:username', function (req, res, next) {
         if (topHikes && topHikes.length > 3) {
           topHikes = _.first(topHikes, 3);
         }
+        
         data.topHikes = topHikes;
+        data.topHike = data.topHikes ? data.topHikes[0] : null;
          
         app.db.collection('destinations').find({nameUrl : {$in: _.pluck(orderedHikes, 'nameUrl')}}).toArray(function (err, destinations) {
           // for each tophike, insert the addl data;
@@ -198,40 +200,42 @@ app.get('/destination/:nameUrl', function (req, res, next) {
   
     },
     products: function (callback) {
-      var categories = ['Jackets', 'Trekking poles', 'Water bottles', 'Fire starters'];
-      categories.forEach(function (category, index) {
-        categories[index] = category.replace(' ', '+');
-      });
-
-      var fetch = function (category, callback) {
-        var requestOptions = {
-          url: 'http://hackathon.backcountry.com:8080/hackathon/public/search?q=' + category,
-          method: 'GET',
-          json: 'true'
-        };
-        request(requestOptions, function (err, response, body) {
-          if (!err && response.statusCode == 200) {
-            callback(null, body);
-          }
-          else {
-            callback(err);
-          }
+      app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
+        var categories = new Array();
+        destination.topGear.forEach(function (element) {
+          categories.push(element.category.replace(' ', '+'));
         });
-      }
 
-      var products = [];
-      async.map(categories, fetch, function (err, res) {
-        if(!err) {
-          res.forEach(function (element, index) {
-            var cat = [];
-            cat.push(res[index].products[0]);
-            cat.push(res[index].products[1]);
-            cat.push(res[index].products[2]);
-            cat.push(res[index].products[3]); //DO IT LIVE
-            products.push({index: index + 1, items: cat});
+        var fetch = function (category, callback) {
+          var requestOptions = {
+            url: 'http://hackathon.backcountry.com:8080/hackathon/public/search?q=' + category,
+            method: 'GET',
+            json: 'true'
+          };
+          request(requestOptions, function (err, response, body) {
+            if (!err && response.statusCode == 200) {
+              callback(null, body);
+            }
+            else {
+              callback(err);
+            }
           });
         }
-        callback(err, products);
+
+        var products = [];
+        async.map(categories, fetch, function (err, res) {
+          if(!err) {
+            res.forEach(function (element, index) {
+              var cat = [];
+              cat.push(res[index].products[0]);
+              cat.push(res[index].products[1]);
+              cat.push(res[index].products[2]);
+              cat.push(res[index].products[3]); //DO IT LIVE
+              products.push({index: index + 1, category: categories[index].replace('+', ' '), items: cat});
+            });
+          }
+          callback(err, products);
+        });
       });
     }
   },
@@ -242,7 +246,7 @@ app.get('/destination/:nameUrl', function (req, res, next) {
     context.areTopGuides = results.topGuides && results.topGuides.length>0;
     context.products = results.products;
 
-    // console.log(context.products[0].items[0])
+    console.log(context.products[0].items[0])
     
     res.render('destination', context);
   });
@@ -266,6 +270,55 @@ app.get('/destinations', function (req, res, next) {
   });
 });
 
+/** Add Activity **/
+app.get('/activity', function (req, res, next) {
+  var context = {
+    css: [{href: '/css/bootstrap.min.css'}, {href: '/css/styles.css'}, {href: '/css/destinations.css'}, {href: 'http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css'}],
+    js: [{src: '/js/jquery.min.js'}, {src: '/js/modernizr.min.js'}, {src: '/js/bootstrap.js'}, {src: 'http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'}, {src: '/js/mapCode.js'}, {src: '/js/destination.js'}],
+    page: {
+      title: "Form"
+    }
+  };
+  res.render('form', context);
+})
+
+app.get('/activity/:username', function (req, res, next) {
+  var act = {
+    userId: "514d2303a12e6b1a017ecf2a",
+    name: "Crystal Chang",
+    username: "crystalchang",
+    profile_img_url: "http://www.rumgr.com/wp-content/themes/rumgr-17/img/headshot-charles.jpg",
+    date: new Date(2013, 3, 20),
+    destinationId: "514d2b0ac39d7232f80003c2",
+    destinationName: "Angel's Landing",
+    destinationUrl: "angels-landing",
+    friendIds: [
+      "dylanbathurst", "charleswatkins", "alexcoleman"
+    ],
+    friends: [
+    {
+      name: "Charles Watkins",
+      username: "charleswatkins",
+      profile_img_url: "http://www.rumgr.com/wp-content/themes/rumgr-17/img/headshot-charles.jpg"
+    },
+      {
+        name: "Dylan Bathurst",
+        username: "dylanbathurst",
+  profile_img_url: "http://localhost:9000/img/profile-dylan.jpg"
+      },
+      {
+        name: "Alex Coleman",
+        username: "alexcoleman",
+        profile_img_url: "https://si0.twimg.com/profile_images/2726845198/d459e06c108e537438bb3a5793be7b07.png"
+      }
+    ]
+  }
+  
+  app.db.collection('activities').insert(act, function (err, result) {
+    res.json(result);
+  });
+});
+
 app.get('/api/search/destination/:term', function (req, res, next) {
   var context = {
     page: {
@@ -273,5 +326,4 @@ app.get('/api/search/destination/:term', function (req, res, next) {
     }
   };
 
-  res.render('destination', context);
 });

@@ -22,6 +22,32 @@
   </div>
 </div>
 
+<div class="user-stats">
+  <div class="container">
+    <div class="row">
+      {{#stats}}
+        <div class="span4">
+          <div class="tophike">
+            <h4><a href="/destination/{{topHike.nameUrl}}">{{topHike.name}}</a></h4>
+            <p>Most hiked trail</p>
+          </div>
+        </div>
+        <div class="span4">
+          <div class="totalmiles">
+            <h4>{{sumDistance}}</h4>
+            <p>Total miles hiked</p>
+          </div>
+        </div>
+        <div class="span4">
+          <h4>{{sumElevationGain}}</h4>
+          <p>Elevation gained</p>
+        </div>
+        <div class="span4"></div>
+      {{/stats}}
+    </div>
+  </div>
+</div>
+
 <div class="user-experience">
   <div class="container">
     <div class="row">
@@ -35,14 +61,14 @@
         <div class="row">
           <div class="span4">
             <h3>Let's Hike</h3>
-            <div class="box">
+            <div class="box primary">
               <p><a class="bookHike" href="/book">Book a Hike With Me</a></p>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="span4">
-            <h3>Favorite Gear <a href="http://www.backcountry.com">Via Backcountry</a></h3>
+            <h3 class="favoritegear">Favorite Gear <a href="http://www.backcountry.com">Via Backcountry</a></h3>
           </div>
         </div>
         <div class="row">
@@ -52,8 +78,5 @@
     </div>
   </div>
 </div>
-
-
-{{> includes/stats.html}}
 
 {{> includes/footer.html}}
