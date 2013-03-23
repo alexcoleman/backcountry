@@ -1,4 +1,4 @@
-body {color:#253744; background-color:#f7f7f7; font-family:"kulturista-web";}
+body {color:#253744; background-color:#e5e5e5; font-family:"kulturista-web";}
 h1, h2, h3, h4, h5, h5 {font-weight:500;}
 
 h1 {font-size:28px; line-height:28px;}
@@ -16,7 +16,7 @@ a {color:#6e7379;}
 .box {padding:40px; background-color:#FFF; border-radius:2px; border-bottom:1px solid #e7e7e7;}
 
 header {height:60px; background-color:#FFF; box-shadow:0 2px 4px rgba(0,0,0,.2); z-index:1000;}
-header #logo {padding:26px 0 0; color:#6e7379; font-family:"delittle-chromatic-inlay"; font-size:22px;}
+header #logo {padding:22px 0 0; color:#6e7379; font-family:"swingdancer"; font-size:24px;}
 header #logo a:hover {text-decoration:none;}
 header #user {padding:20px 0 0; text-align:right; font-size:12px;}
 header #user img {margin-right:10px; border-radius:2px;}
@@ -28,7 +28,7 @@ header #user img {margin-right:10px; border-radius:2px;}
 .popular-products .product {margin-bottom:20px;}
 .popular-products .product:hover {box-shadow:0 0 20px rgba(0,0,0,0.05);}
 
-.details {min-height:42px; margin-top:0px; padding:10px; background-color:#FFF; border-bottom:1px solid #e7e7e7;}
+.details {min-height:42px; margin-top:0px; padding:10px; background-color:#FFF; border-bottom:1px solid rgba(0,0,0,.2);}
 .details p {margin:0; text-transform:capitalize;}
 .details .brand {margin-top:10px; font-size:12px; line-height:14px; text-transform:uppercase;}
 .details .title {color:#333; font-size:14px;}

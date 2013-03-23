@@ -19,6 +19,7 @@ $(document).ready(function () {
       img.className = 'marker-image';
       img.setAttribute('src', f.properties.image);
       img.setAttribute('width', 60);
+      img.style.margin = "-40px -30px 0px";
       return img;
   });
 

@@ -1,12 +1,27 @@
-{{#areTopGuides}}
+{{#destination}}
 <div id="destination-guides">
+  {{#areTopGuides}}
+    <ul>
+      {{#topGuides}}
+      <li>
+        <p><a href="/user/{{username}}"><img src="{{profile_img_url}}" /></a>
+        <p class="name">{{name}}</p>
+        <p class="hikecount">{{count}}</p>
+      </li>
+      {{/topGuides}}
+    </ul>
+    <p class="see-more">
+      <a href="#">{{destination.addlGuides}} more experienced guides...</a>
+    </p>
+  {{/areTopGuides}}
+  {{^areTopGuides}}
   <ul>
-    {{#topGuides}}
-    <li><a href="/user/{{username}}"><img src="{{profile_img_url}}" /> {{name}} ({{count}})</a></li>
-    {{/topGuides}}
+    <li class="adduser">
+      <a href="/user/{{username}}"><img src="/img/profile-adduser.jpg" /></a>
+    </li>
   </ul>
+  <p>Nobody has hiked this yet.</p>
+  <p><a href="#">Be the first!</a></p>
+  {{/areTopGuides}}
 </div>
-{{/areTopGuides}}
-{{^areTopGuides}}
-<p>Nobody has hiked this yet. <a href="#">Be the first!</a></p>
-{{/areTopGuides}}
+{{/destination}}
