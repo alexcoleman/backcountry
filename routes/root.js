@@ -66,7 +66,7 @@ app.get('/user/:username', function (req, res, next) {
         var data = {};
         data.activities = acts;
         data.topMonths = _.countBy(acts, function(act) {
-          return act.date.getMonth();
+          return act.date ? act.date.getMonth() : 0;
         });
         data.topYears = _.countBy(acts, function(act) {
           return act.date.getFullYear();
@@ -229,10 +229,12 @@ app.get('/destination/:nameUrl', function (req, res, next) {
           if(!err) {
             res.forEach(function (element, index) {
               var cat = [];
-              cat.push(res[index].products[0]);
-              cat.push(res[index].products[1]);
-              cat.push(res[index].products[2]);
-              cat.push(res[index].products[3]); //DO IT LIVE
+              if(res[index]) {
+                cat.push(res[index].products[0]);
+                cat.push(res[index].products[1]);
+                cat.push(res[index].products[2]);
+                cat.push(res[index].products[3]); //DO IT LIVE
+              }
               products.push({index: index + 1, category: categories[index].replace('+', ' '), items: cat});
             });
           }
