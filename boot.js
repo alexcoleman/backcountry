@@ -6,7 +6,6 @@ var express = require('express'),
     config = require('config'),
     fs = require('fs'),
     hoganEngine = require('hogan-engine'),
-    mongoose = require('mongoose'),
     mongo= require('mongoskin');
 
 var app = module.exports = express();
