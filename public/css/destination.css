@@ -22,7 +22,7 @@
 
 .category-item {height:100px; background-color:#e0e4e5}
 .category-item a {height:100px; display:block; color:#FFF;}
-.category-item.active {background-color:#c1c9cc;}
+.active {background-color:#c1c9cc;}
 
 .category-products {margin-top:40px;}
 
@@ -30,3 +30,7 @@ h3 {margin:0 0 20px; font-size:18px;}
 h3 a {font-size:11px;}
 
 .description {margin-bottom:20px; padding-bottom:20px;}
+
+#category-2,
+#category-3,
+#category-4 {display:none;}
