@@ -4,11 +4,13 @@ $(document).ready(function () {
       lon = window.coords.lon;
 
   map.addLayer(mapbox.layer().id('usedgearsale.map-y2kozuac'));
+  map.ui.zoomer.add();
+  map.ui.zoombox.add();
 
   // Create and add marker layer
   var markerLayer = mapbox.markers.layer().features([{
       "geometry": { "type": "Point", "coordinates": [lon, lat]},
-      "properties": { "image": "http://placehold.it/100x100" }
+      "properties": { "image": "/img/map-marker.png" }
   }]).factory(function(f) {
   // Define a new factory function. This takes a GeoJSON object
   // as its input and returns an element - in this case an image -
@@ -16,9 +18,10 @@ $(document).ready(function () {
       var img = document.createElement('img');
       img.className = 'marker-image';
       img.setAttribute('src', f.properties.image);
+      img.setAttribute('width', 60);
       return img;
   });
 
   map.addLayer(markerLayer)
-      .setExtent(markerLayer.extent()).zoom(10, true);
+      .setExtent(markerLayer.extent()).zoom(12, true);
 });

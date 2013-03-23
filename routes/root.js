@@ -2,7 +2,8 @@ var express = require('express'),
     app = EXPRESS_APP,
     hoganEngine = require('hogan-engine'),
     _ = require('underscore'),
-    async = require('async');
+    async = require('async'),
+    request = require('request');
 
 /** Home **/
 app.get('/', function (req, res, next) {
@@ -72,6 +73,8 @@ app.get('/destination/:nameUrl', function (req, res, next) {
      .rest(destination.participants.length-3)
      .reverse()
      .value();
+
+
     
     destination.topGuides = topGuides;
     destination.areTopGuides = function () {
