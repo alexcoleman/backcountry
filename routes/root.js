@@ -118,6 +118,8 @@ app.get('/user/:username', function (req, res, next) {
         return howlong.ago(this.date);
       };
 
+      console.log(context.stats)
+
       res.render('user', context);
     
   });
