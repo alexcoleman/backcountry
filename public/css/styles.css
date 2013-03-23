@@ -13,7 +13,7 @@ a {color:#6e7379;}
 .caret .caret-outer {position:absolute; top:0; left:0; display:inline-block; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #eff1eb;}
 .caret .caret-inner {position:absolute; top: 1px; left: 1px; display: inline-block; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid #fff;}
 
-.box {padding:40px; background-color:#FFF; border-radius:2px; border-bottom:1px solid #e7e7e7;}
+.box {padding:40px; background-color:#FFF; border-radius:2px; border-bottom:1px solid rgba(0,0,0,.2);}
 
 header {height:60px; background-color:#FFF; box-shadow:0 2px 4px rgba(0,0,0,.2); z-index:1000;}
 header #logo {padding:22px 0 0; color:#6e7379; font-family:"swingdancer"; font-size:24px;}
