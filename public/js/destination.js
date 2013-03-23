@@ -27,8 +27,6 @@ function setupSuggestedGear() {
     $('#category-3').hide();
     $('#category-4').hide();
 
-    console.log(clickedCategory)
-
     $('#' + clickedCategory).show();
   });
 
