@@ -1,14 +1,36 @@
-/*destination page*/
+
 .destination {margin:30px 0 0;}
 
-.hikeinfo {margin:40px 0 30px; padding:40px 0; background-color:#65777f; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); border-radius:2px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
-.hikeinfo h2 {margin:10px 0 30px; font-size:20px; color:#f7f7f7;}
-.hikeinfo .mapWrapper {padding:0 40px;}
-.hikeinfo #map {width:380px; height:220px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
+.quick-stats {text-align:center;}
+.quick-stats p {color:#6e7379;}
+.quick-stats .span2 {border-left:1px solid #EEE;}
 
-.suggested-guides {text-align:center;}
-.suggested-guides ul {margin:0 0 10px;}
+.hikeinfo {margin:40px 0 30px; padding:40px 0; background-color:#65777f; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
+.hikeinfo .mapWrapper {padding:0 40px;}
+.hikeinfo #map {width:400px; height:230px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
+
+.suggested-guides {text-align:center; background-color:#FFF; height:230px;}
+.suggested-guides h2 {margin:0; padding:20px 0; line-height:28px; font-size:18px;}
+.suggested-guides ul {margin:0;}
 .suggested-guides ul li {display:inline-block; width:100px; margin-right:20px;}
-.suggested-guides ul li img {width:80px; border-radius:80px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
-.suggested-guides ul li a {display:block; padding:5px; font-size:11px; text-align:center; color:rgba(255,255,255,.5);}
-.suggested-guides a {color:rgba(255,255,255,.5); font-size:11px;}
+.suggested-guides ul li img {position:relative; top:0; width:80px; border-radius:80px; box-shadow:0 2px 4px rgba(0,0,0,.2); -webkit-transition:all 0.1s ease-in-out;}
+.suggested-guides ul li img:hover {position:relative; top:-5px; box-shadow:0 8px 6px rgba(0,0,0,.05);}
+.suggested-guides ul li a {display:block; padding:5px; font-size:12px; text-align:center;}
+.suggested-guides a {font-size:12px;}
+.suggested-guides .see-more {padding:10px 0 20px;}
+
+.popular-products {margin:0 auto;}
+.popular-products h2 {margin-top:20px;}
+.popular-products .product {margin-bottom:20px;}
+.popular-products .product:hover {box-shadow:0 0 20px rgba(0,0,0,0.05);}
+
+.details {min-height:42px; margin-top:0px; padding:10px; background-color:#FFF; border-bottom:1px solid #e7e7e7;}
+.details p {margin:0; text-transform:capitalize;}
+.details .brand {margin-top:10px; font-size:12px; line-height:14px; text-transform:uppercase;}
+.details .title {color:#333; font-size:14px;}
+.details .price {margin-top:10px; font-size:18px; color:#65777f;}
+
+h3 {margin:0 0 10px; font-size:18px;}
+h3 a {font-size:11px;}
+
+.description {margin-bottom:20px; padding-bottom:20px;}
