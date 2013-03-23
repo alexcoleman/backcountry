@@ -10,7 +10,10 @@
 h2 {padding-top:60px; text-align:center; color:#FFF; font-size:28px; line-height:28px; text-shadow:0 1px 1px rgba(0,0,0,.5);}
 h3 {font-size:18px;}
 h3 a {font-size:11px;}
-.user-experience {margin:0 0 40px;}
+
+.user-experience {margin:-20px 0 40px;}
+.bookHike {display:block; padding:10px 0; margin:10px 0 0;}
+.bookHike:hover {text-decoration: none; color:#fff;}
 
 .product {margin-bottom:20px;}
 
@@ -19,7 +22,8 @@ h3 a {font-size:11px;}
 #activity ul li {margin-bottom:10px; padding:20px; list-style-type:none; border-bottom:1px solid rgba(0,0,0,.2);}
 #activity p {margin:0;}
 #activity .ss-icon {padding-right:10px; color:#65777f;}
-#activity .expand {background-color:#65777f; text-align:center; color:#F7F7F7; border-bottom:0; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); box-shadow:0 2px 4px rgba(0,0,0,.2);}
+#activity .expand,
+.bookHike {background-color:#65777f; text-align:center; color:#F7F7F7; border-bottom:0; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); box-shadow:0 2px 4px rgba(0,0,0,.2);}
 #activity .friends {margin-top:10px; padding-left:30px;}
 #activity .friends img {border-radius:100px;}
 #activity .prettydate {font-size:11px; color:#c1c9cc;}
