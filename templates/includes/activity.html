@@ -3,10 +3,10 @@
     <h3>{{user.first_name}}'s Experience</h3>
     {{#isCrystal}}
     <div id="add-hike">
-      <form method="post" action="/activity/post">
+      <form method="post" action="/activity/post" class="form-inline">
         <input type="text" id="hike-name" name="hike-name" value="" placeholder="Hike Name" />
-        <input type="text" id="add-friends" name="add-friends" value="" placeholder="Add Friends" />
-        <input type="submit" value="Add Hike">
+        <input type="text" id="add-friends" name="add-friends" value="" placeholder="Tag Friends" />
+        <button type="submit" class="btn">Add Hike</button>
       </form>
     </div>
     {{/isCrystal}}
