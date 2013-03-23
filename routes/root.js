@@ -285,7 +285,7 @@ app.get('/activity', function (req, res, next) {
   res.render('form', context);
 })
 
-app.get('/activity/:username', function (req, res, next) {
+app.post('/activity/:username', function (req, res, next) {
   var act = {
     userId: "514d2303a12e6b1a017ecf2a",
     name: "Crystal Chang",
