@@ -21,11 +21,11 @@
 .suggested-guides .see-more {padding:10px 0 20px; text-decoration:underline;}
 
 .category-item {text-align: center;}
-.category-item a {height:60px; padding:40px 0 0; display:block; color:#FFF; opacity:.5;}
-.category-item a.category-1 {background-color:#c1c9cc;}
-.category-item a.category-2 {background-color:#c1c9cc;}
-.category-item a.category-3 {background-color:#c1c9cc;}
-.category-item a.category-4 {background-color:#c1c9cc;}
+.category-item a {height:60px; padding:40px 0 0; display:block; color:#FFF; opacity:.3; }
+.category-item a.category-1 {background-color:#585244;}
+.category-item a.category-2 {background-color:#9d6344;}
+.category-item a.category-3 {background-color:#6677a3;}
+.category-item a.category-4 {background-color:#48693d;}
 .category-item a:hover {text-decoration:none;}
 .category-item .active {opacity:1; background:#c1c9cc url('/img/caret.png') no-repeat center bottom; background-size:30px 20px;}
 
