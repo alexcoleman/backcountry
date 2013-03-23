@@ -16,7 +16,8 @@
     "hogan-engine": "0.9.2",
     "mongoskin": "0.5.0",
     "nodemon": "0.7.2",
-    "underscore": "1.4.4"
+    "underscore": "1.4.4",
+    "async": "0.2.6"
   },
   "main": "index",
   "engines": {
