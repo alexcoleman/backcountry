@@ -1,0 +1,9 @@
+{
+  "db": {
+    "name": "campanyon_v2",
+    "host": "localhost",
+    "port": 27017,
+    "user": "charles@rumgr.com",
+    "pass": "OD5p8m1CBUm"
+  }
+}

@@ -16,3 +16,7 @@ set('PORT', 9000);
 
 // HTTP
 set('HTTP_DOMAIN', null);
+
+// DB
+set('DB_NAME', 'DB_USER');
+set('DB_USER', 'DB_PASS');
