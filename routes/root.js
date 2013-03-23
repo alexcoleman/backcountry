@@ -85,7 +85,9 @@ app.get('/user/:username', function (req, res, next) {
         if (topHikes && topHikes.length > 3) {
           topHikes = _.first(topHikes, 3);
         }
+        
         data.topHikes = topHikes;
+        data.topHike = data.topHikes ? data.topHikes[0] : null;
          
         app.db.collection('destinations').find({nameUrl : {$in: _.pluck(orderedHikes, 'nameUrl')}}).toArray(function (err, destinations) {
           // for each tophike, insert the addl data;
@@ -263,6 +265,25 @@ app.get('/destinations', function (req, res, next) {
     res.render('destinations', context);
   });
 });
+
+/** Add Activity **/
+app.get('/activity', function (req, res, next) {
+  var context = {
+    css: [{href: '/css/bootstrap.min.css'}, {href: '/css/styles.css'}, {href: '/css/destinations.css'}, {href: 'http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css'}],
+    js: [{src: '/js/jquery.min.js'}, {src: '/js/modernizr.min.js'}, {src: '/js/bootstrap.js'}, {src: 'http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'}, {src: '/js/mapCode.js'}, {src: '/js/destination.js'}],
+    page: {
+      title: "Form"
+    }
+  };
+  res.render('form', context);
+})
+
+app.post('/activity/:', function (req, res, next) {
+  var act = {};
+  act = 
+  
+})
+
 
 app.get('/api/search/destination/:term', function (req, res, next) {
   var context = {
