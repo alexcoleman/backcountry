@@ -32,6 +32,10 @@ app.get('/user/:username', function (req, res, next) {
     user.hasReviews = function () {
       return this.reviews.length;
     };
+
+    user.hasSuggestedGear = function () {
+      return this.suggestedGear.length;
+    };
     
     res.render('user', context);
   });
