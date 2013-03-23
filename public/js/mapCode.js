@@ -4,6 +4,8 @@ $(document).ready(function () {
       lon = window.coords.lon;
 
   map.addLayer(mapbox.layer().id('usedgearsale.map-y2kozuac'));
+  map.ui.zoomer.add();
+  map.ui.zoombox.add();
 
   // Create and add marker layer
   var markerLayer = mapbox.markers.layer().features([{
@@ -21,4 +23,5 @@ $(document).ready(function () {
 
   map.addLayer(markerLayer)
       .setExtent(markerLayer.extent()).zoom(10, true);
+
 });
