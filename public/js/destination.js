@@ -12,8 +12,23 @@ function setupSeasonalGearWidget() {
 }
 
 function setupSuggestedGear() {
+  // hacky...
   $('.category-item a').click(function (e) {
     e.preventDefault();
-    $(this).toggleClass('active');
+
+    var $this = $(this),
+        clickedCategory = ($this.hasClass('active')) ? $this.attr('class').split(' ')[0] : $this.attr('class');
+    
+    $('.active').removeClass('active');
+    $this.addClass('active');
+
+    $('#category-1').hide();
+    $('#category-2').hide();
+    $('#category-3').hide();
+    $('#category-4').hide();
+
+    $('#' + clickedCategory).show();
   });
+
+  $('.category-1').click();
 }
