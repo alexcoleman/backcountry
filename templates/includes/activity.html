@@ -1,6 +1,7 @@
 {{#hasActivity}}
   <div id="activity">
     <h3>{{user.first_name}}'s Experience</h3>
+    {{#isCrystal}}
     <div id="add-hike">
       <form method="post" action="/add-hike" class="form-inline">
         <input type="text" id="hike-name" name="hike-name" value="" placeholder="Hike Name" autocomplete="off" />
@@ -8,6 +9,7 @@
         <button type="submit" class="btn">Add Hike</button>
       </form>
     </div>
+    {{/isCrystal}}
     <ul>
       {{#activities}}
       <li class="box">
