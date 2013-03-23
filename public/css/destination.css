@@ -20,9 +20,9 @@
 .suggested-guides a {font-size:12px;}
 .suggested-guides .see-more {padding:10px 0 20px; text-decoration:underline;}
 
-.category-item {height:100px; background-color:#e0e4e5}
+.category-item {height:100px; background-color:#e0e4e5; text-align: center;}
 .category-item a {height:100px; display:block; color:#FFF;}
-.active {background-color:#c1c9cc;}
+.active {background:#333 url('/img/caret.png') no-repeat center bottom;}
 
 .category-products {margin-top:40px;}
 
