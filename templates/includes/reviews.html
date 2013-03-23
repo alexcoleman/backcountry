@@ -5,6 +5,10 @@
     <h3>Reviews for {{first_name}}</h3>
     <ul>
       {{#reviews}}
+      <li>
+        <a href="/user/{{reviewerUsernam}}"><img src="{{profile_img_url}}" width="40" /> {{reviewerName}}</a> <span class="prettydate">{{prettyDate}}</span>
+        <p>{{content}}</p>
+      </li>
       {{/reviews}}
     </ul>
   {{/hasReviews}}

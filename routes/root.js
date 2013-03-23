@@ -72,6 +72,7 @@ app.get('/user/:username', function (req, res, next) {
       context.prettyDate = function () {
         return howlong.ago(this.date);
       };
+
       res.render('user', context);
     
   });

@@ -25,3 +25,4 @@ h3 a {font-size:11px;}
 #activity .prettydate {font-size:11px; color:#c1c9cc;}
 
 #reviews {margin-top:40px;}
+#reviews ul {list-style: none; margin:0;}
