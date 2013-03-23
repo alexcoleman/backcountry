@@ -23,12 +23,11 @@ app.get('/user/:id', function (req, res, next) {
       title: "User page"
     }
   };
-  console.log(req.params.id)
-  app.models.User.find({}, function (err, user) {
+  
+  app.db.collection('users').findById(req.params.id, function (err, user) {
     context.user = user;
-    console.log('found a user', err)
     res.render('user', context);
-  })
+  });
 });
 
 /** Destination **/
@@ -38,14 +37,12 @@ app.get('/destination/:id', function (req, res, next) {
       title: "Destination page"
     }
   };
-
-  console.log('th eid:', req.params.id)
-  app.models.User.findOne({_id: req.params.id}, function (err, destination) {
-    console.log('error', err)
+  
+  app.db.collection('destinations').findById(req.params.id, function (err, destination) {
     context.destination = destination;
-    console.log('found a destination', destination)
-    res.render('destination', context);
+    res.render('destination', destination);
   });
+  
 
 });
 
@@ -59,40 +56,3 @@ app.get('/api/search/destination/:term', function (req, res, next) {
 
   res.render('destination', context);
 });
-
-/*
-  var destination = {};
-  var topGear = [
-    {
-      "season": "spring",
-      "categories": [
-        {"name":"Trekking Poles"},
-        {"name":"Gloves"}
-      ]
-    },
-    {
-      "season": "summer",
-      "categories": [
-        {"name":"Trekking Poles"},
-        {"name":"Gloves"}
-      ]
-    },
-    {
-      "season": "fall",
-      "categories": [
-        {"name":"Trekking Poles"},
-        {"name":"Gloves"}
-      ]
-    },
-    {
-      "season": "winter",
-      "categories": [
-        {"name":"Trekking Poles"},
-        {"name":"Gloves"}
-      ]
-    }
-  ];
-  
-  destination.topGear;
-  context.destination = destination;
-  */

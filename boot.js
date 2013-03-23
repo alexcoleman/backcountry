@@ -6,31 +6,13 @@ var express = require('express'),
     config = require('config'),
     fs = require('fs'),
     hoganEngine = require('hogan-engine'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    mongo= require('mongoskin');
 
-var app = express();
-app.mongoose = mongoose;
-var db = config.db;
+var app = module.exports = express();
 app.db_url = 'mongodb://rumgr:egaragesale@dharma.mongohq.com:10029/sherpa';
+app.db = mongo.db(app.db_url+'?auto_reconnect=true')
 
-console.log(app.db_url);
-app.mongoose.connect(app.db_url);
-
-/** Setup models **/
-var models = {}
-  , models_path = __dirname + '/models'
-  , model_files = fs.readdirSync(models_path);
-
-model_files.forEach(function(file) {
-  if(file[0]=='.'){
-    return;
-  }
-  var modelName = file.split('.')[0];
-  var m = modelName.charAt(0).toUpperCase() + modelName.slice(1);
-  models[m] = require('./models/'+modelName)(app.mongoose).model;
-});
-
-app.models = models;
 
 EXPRESS_APP = app;
 
