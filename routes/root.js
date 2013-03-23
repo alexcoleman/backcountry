@@ -31,27 +31,38 @@ app.get('/user/:username', function (req, res, next) {
   async.parallel({
     user: function (callback) {
       app.db.collection('users').findOne({username: req.params.username}, function (err, user) {
-        console.log(user)
-        user.hasReviews = user && user.reviews && user.reviews.length>1 ? true : false;
-        user.hasSuggestedGear = user.suggestedGear && user.suggestedGear.length>1 ? true : false;
+        user.hasReviews = user && user.reviews && user.reviews.length>0 ? true : false;
+        user.hasSuggestedGear = user.suggestedGear && user.suggestedGear.length>0 ? true : false;
     
         callback(null, user);
       });
     },
     activities: function (callback) {
-      app.db.collection('activities').find({$or: [{username: req.params.username}, {$in: {friendIds: req.params.username}}]}).toArray(function (err, acts) {
-
-        console.log(acts)
-        
+      app.db.collection('activities').find({$or: [{username: req.params.username}, {friendIds: {$in: [req.params.username]}}]}).sort('date', -1).toArray(function (err, acts) {
+        for (var i=0; i<acts.length; i++) {
+          var act = acts[i];
+          if ( !(act.username == req.params.username) && act.friends && act.friends.length>0) {
+            var shownFriends = new Array();
+            for (var j=0; j<act.friends.length; j++) {
+              var friend = act.friends[j];
+              if ( !(friend.username == req.params.username) ) {
+                shownFriends.push(friend);
+              }
+            }
+            
+            var entryUser = {name: act.name, username: act.username};
+            shownFriends.push(entryUser)
+            act.friends = shownFriends;
+          }
+        }
         callback(null, acts);
       });
     }
   },
   function (err, results) {
       context.user = results.user;
-
-      context.hasActivity = results.activities && results.activities.length>1 ? true : false;
       context.activities = results.activities;
+      context.hasActivity = context.activities && context.activities.length>0 ? true : false;
       res.render('user', context);
     
   });
@@ -67,19 +78,20 @@ app.get('/destination/:nameUrl', function (req, res, next) {
   };
   
   app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
-    var topGuides = _.chain(destination.participants)
-     .sortBy(function(p) {return p.count})
-     .rest(destination.participants.length-3)
-     .reverse()
-     .value();
-
-
+    if (destination.participants) {
+      var topGuides = _.chain(destination.participants)
+       .sortBy(function(p) {return p.count})
+       .rest(destination.participants.length-3)
+       .reverse()
+       .value();
     
-    destination.topGuides = topGuides;
+      destination.topGuides = topGuides;
+      destination.addlGuides = destination.participants.length - destination.topGuides.length;
+    }
+    
     destination.areTopGuides = function () {
       return this.topGuides.length;
     };
-    destination.addlGuides = destination.participants.length - destination.topGuides.length;
     
     destination.seasonalGear = function () {
       return this.topGear.length;

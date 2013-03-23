@@ -1,22 +1,22 @@
 {{> includes/header.html}}
 
-<div class="cover"></div>
+<style>
+  .cover {background:url('{{user.cover_img_url}}') top no-repeat; background-size:cover;}
+</style>
+
+<div class="cover">
+  <h2>{{user.name}}</h2>
+</div>
 
 <div class="user-profile">
   <div class="container">
     <div class="row">
-      <div class="offset2 span3">
-        <h3>{{user.name}}</h3>
-      </div>
-      <div class="span2">
+      <div class="offset5 span2">
         <div class="user-info">
           <div class="user-photo">
             <img src="{{user.profile_img_url}}" />
           </div>
         </div>
-      </div>
-      <div class="span3">
-        <h3>Las Vegas, NV</h3>
       </div>
     </div>
   </div>
@@ -25,23 +25,21 @@
 <div class="user-experience">
   <div class="container">
     <div class="row">
-      <div class="span8">
+      <div class="span9">
+        <h3>Recent Activity</h3>
         <div class="box">
-          Hi
+          {{> includes/activity.html}}
+          {{> includes/reviews.html}}
         </div>
       </div>
-      <div class="span4">
-        <div class="box">
-          Hi
+      <div class="span3">
+        <div class="row">
+          <h3>Top Gear</h3>
+          {{> includes/suggested-gear.html}}
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-{{> includes/activity.html}}
-{{> includes/reviews.html}}
-{{> includes/suggested-gear.html}}
 
 {{> includes/footer.html}}

@@ -20,17 +20,6 @@
 .suggested-guides a {font-size:12px;}
 .suggested-guides .see-more {padding:10px 0 20px; text-decoration:underline;}
 
-.popular-products {margin:0 auto;}
-.popular-products h2 {margin-top:20px;}
-.popular-products .product {margin-bottom:20px;}
-.popular-products .product:hover {box-shadow:0 0 20px rgba(0,0,0,0.05);}
-
-.details {min-height:42px; margin-top:0px; padding:10px; background-color:#FFF; border-bottom:1px solid #e7e7e7;}
-.details p {margin:0; text-transform:capitalize;}
-.details .brand {margin-top:10px; font-size:12px; line-height:14px; text-transform:uppercase;}
-.details .title {color:#333; font-size:14px;}
-.details .price {margin-top:10px; font-size:18px; color:#65777f;}
-
 .category-item {height:100px; background-color:#e0e4e5}
 .category-item a {height:100px; display:block; color:#FFF;}
 .active {background-color:#c1c9cc;}
