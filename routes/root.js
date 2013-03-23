@@ -126,8 +126,7 @@ app.get('/user/:username', function (req, res, next) {
         return howlong.ago(this.date);
       };
 
-      console.log(context.stats)
-
+      context.page.title = results.user.first_name +' '+results.user.last_name;
       res.render('user', context);
     
   });
@@ -247,7 +246,8 @@ app.get('/destination/:nameUrl', function (req, res, next) {
     context.products = results.products;
 
     console.log(context.products[0].items[0])
-    
+
+    context.page.title = results.destination.name;
     res.render('destination', context);
   });
 
