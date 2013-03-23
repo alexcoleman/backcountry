@@ -110,7 +110,7 @@ app.get('/user/:username', function (req, res, next) {
           }
           
           data.sumElevationGain = sumElevationGain;
-          data.sumDistance = sumDistance;
+          data.sumDistance = Math.round(sumDistance * 10)/10;
           callback(null, data);
         });
         
