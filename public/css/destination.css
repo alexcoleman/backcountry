@@ -10,14 +10,14 @@
 .hikeinfo #map {width:400px; height:230px; box-shadow:0 2px 4px rgba(0,0,0,.2);}
 
 .suggested-guides {text-align:center; background-color:#FFF; height:230px;}
-.suggested-guides h2 {margin:0; padding:20px 0; line-height:28px; font-size:18px;}
+.suggested-guides h2 {margin:0; padding:20px 0 10px; line-height:28px; font-size:18px;}
 .suggested-guides ul {margin:0;}
 .suggested-guides ul li {display:inline-block; width:100px; margin-right:20px;}
-.suggested-guides ul li img {position:relative; top:0; width:80px; border-radius:80px; box-shadow:0 2px 4px rgba(0,0,0,.2); -webkit-transition:all 0.1s ease-in-out;}
+.suggested-guides ul li img {position:relative; top:0; width:80px; margin-bottom:5px; border-radius:80px; box-shadow:0 2px 4px rgba(0,0,0,.2); -webkit-transition:all 0.1s ease-in-out;}
 .suggested-guides ul li img:hover {position:relative; top:-5px; box-shadow:0 8px 6px rgba(0,0,0,.05);}
 .suggested-guides ul li a {display:block; padding:5px; font-size:12px; text-align:center;}
 .suggested-guides a {font-size:12px;}
-.suggested-guides .see-more {padding:10px 0 20px;}
+.suggested-guides .see-more {padding:10px 0 20px; text-decoration:underline;}
 
 .popular-products {margin:0 auto;}
 .popular-products h2 {margin-top:20px;}
@@ -30,7 +30,13 @@
 .details .title {color:#333; font-size:14px;}
 .details .price {margin-top:10px; font-size:18px; color:#65777f;}
 
-h3 {margin:0 0 10px; font-size:18px;}
+.category-item {height:100px; background-color:#e0e4e5}
+.category-item a {height:100px; display:block; color:#FFF;}
+.category-item.active {background-color:#c1c9cc;}
+
+.category-products {margin-top:40px;}
+
+h3 {margin:0 0 20px; font-size:18px;}
 h3 a {font-size:11px;}
 
 .description {margin-bottom:20px; padding-bottom:20px;}

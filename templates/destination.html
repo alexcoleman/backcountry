@@ -60,7 +60,7 @@
             </li>
           </ul> -->
           <p class="see-more">
-            <a href="#">19 more experienced guides...</a>
+            <a href="#">{{destination.addlGuides}} more experienced guides...</a>
           </p>
         </div>
       </div>
@@ -68,7 +68,7 @@
   </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <div class="hikedescription">
     <div class="row">
       <div class="span12">
@@ -78,69 +78,104 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="meta">
+<div class="categories">
   <div class="container">
     <div class="row">
       <div class="span12">
         <h3>Suggested Gear <a href="/">Winter</a></h3>
         <div class="container">
           <div class="row">
-            <div class="span3 product">
-              <div class="image">
-                <a href="/product/{{id}}">
-                  <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
-                </a>
-              </div>
-              <div class="details">
-                <p class="brand">Hello Kitty</p>
-                <p class="title">Notebook</p>
-                <p class="price">$22</p>
+            <div class="span3">
+              <div class="category-item active">
+                <a href="#">Jackets</a>
               </div>
             </div>
-            <div class="span3 product">
-              <div class="image">
-                <a href="/product/1">
-                  <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
-                </a>
-              </div>
-              <div class="details">
-                <p class="brand">Hello Kitty</p>
-                <p class="title">Notebook</p>
-                <p class="price">$22</p>
+            <div class="span3">
+              <div class="category-item">
+                <a href="#">Water Bottles</a>
               </div>
             </div>
-            <div class="span3 product">
-              <div class="image">
-                <a href="/product/{{id}}">
-                  <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
-                </a>
-              </div>
-              <div class="details">
-                <p class="brand">Hello Kitty</p>
-                <p class="title">Notebook</p>
-                <p class="price">$22</p>
+            <div class="span3">
+              <div class="category-item">
+                <a href="#">Fire Starters</a>
               </div>
             </div>
-            <div class="span3 product">
-              <div class="image">
-                <a href="/product/{{id}}">
-                  <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
-                </a>
-              </div>
-              <div class="details">
-                <p class="brand">Hello Kitty</p>
-                <p class="title">Notebook</p>
-                <p class="price">$22</p>
+            <div class="span3">
+              <div class="category-item">
+                <a href="#">Walkie Talkie</a>
               </div>
             </div>
           </div>
         </div>
-        <!-- {{> includes/seasonal-gear.html}} -->
       </div>
     </div>
   </div>
+</div>
+
+<div class="category-products">
+  <div class="container">
+    <div class="row">
+      <div class="span3" style="height:20px; position:relative;">
+        <div class="caret">
+          <span class="caret-outer"></span>
+          <span class="caret-inner"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span3 product">
+        <div class="image">
+          <a href="/product/{{id}}">
+            <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
+          </a>
+        </div>
+        <div class="details">
+          <p class="brand">Hello Kitty</p>
+          <p class="title">Notebook</p>
+          <p class="price">$22</p>
+        </div>
+      </div>
+      <div class="span3 product">
+        <div class="image">
+          <a href="/product/1">
+            <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
+          </a>
+        </div>
+        <div class="details">
+          <p class="brand">Hello Kitty</p>
+          <p class="title">Notebook</p>
+          <p class="price">$22</p>
+        </div>
+      </div>
+      <div class="span3 product">
+        <div class="image">
+          <a href="/product/{{id}}">
+            <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
+          </a>
+        </div>
+        <div class="details">
+          <p class="brand">Hello Kitty</p>
+          <p class="title">Notebook</p>
+          <p class="price">$22</p>
+        </div>
+      </div>
+      <div class="span3 product">
+        <div class="image">
+          <a href="/product/{{id}}">
+            <img src="http://content.backcountry.com/images/items/medium/PRA/PRA1246/BLSPR.jpg" />
+          </a>
+        </div>
+        <div class="details">
+          <p class="brand">Hello Kitty</p>
+          <p class="title">Notebook</p>
+          <p class="price">$22</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- {{> includes/seasonal-gear.html}} -->
 </div>
 <script>
 window.coords = {
