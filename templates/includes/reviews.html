@@ -7,7 +7,7 @@
         {{#reviews}}
         <li>
           <p>
-            <a href="/user/{{reviewerUsernam}}"><img src="{{profile_img_url}}" width="40" /> {{reviewerName}}</a> <span class="prettydate">{{prettyDate}}</span>
+            <a href="/user/{{reviewerUsername}}"><img src="{{profile_img_url}}" width="40" /> {{reviewerName}}</a> <span class="prettydate">{{prettyDate}}</span>
           </p>
           <p>{{content}}</p>
         </li>
@@ -20,7 +20,7 @@
     <div id="reviews">
       <h3>Reviews</h3>
       <div class="box">
-        <p>Nobody has left a review for {{first_name}} yet. <a href="/user/addreview">Be the first</a></p>
+        <p class="nobodyreviewed">Nobody has left a review for {{first_name}} yet. <a href="/user/addreview">Be the first</a></p>
       </div>
     </div>
   {{/hasReviews}}
