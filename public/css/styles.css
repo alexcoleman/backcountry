@@ -9,6 +9,10 @@ a {color:#6e7379;}
 
 .container {margin:auto;}
 
+.caret {position:absolute; top:-7px; right:60px; width:12px; height:7px; overflow:hidden; border:none;}
+.caret .caret-outer {position:absolute; top:0; left:0; display:inline-block; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #eff1eb;}
+.caret .caret-inner {position:absolute; top: 1px; left: 1px; display: inline-block; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid #f7f7f7;}
+
 .box {padding:40px; background-color:#FFF; border-radius:2px; border-bottom:1px solid #e7e7e7;}
 
 header {height:60px; background-color:#FFF; box-shadow:0 2px 4px rgba(0,0,0,.2); z-index:1000;}
@@ -16,6 +20,8 @@ header #logo {padding:26px 0 0; color:#6e7379; font-family:"delittle-chromatic-i
 header #logo a:hover {text-decoration:none;}
 header #user {padding:20px 0 0; text-align:right; font-size:12px;}
 header #user img {margin-right:10px; border-radius:2px;}
+
+#footer {margin-top:40px;}
 
 @media (min-width: 768px) and (max-width: 979px) { 
 
