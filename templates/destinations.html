@@ -1,7 +1,17 @@
 {{> includes/header.html}}
 
-{{#destinations}}
-  <a href="/destination/{{nameUrl}}">{{name}}</a>
-{{/destinations}}
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <ul>
+      {{#destinations}}
+        <li>
+          <a href="/destination/{{nameUrl}}">{{name}}</a>
+        </li>
+      {{/destinations}}
+      </ul>
+    </div>
+  </div>
+</div>
 
 {{> includes/footer.html}}
