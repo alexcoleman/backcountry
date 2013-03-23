@@ -168,16 +168,16 @@ app.get('/destination/:nameUrl', function (req, res, next) {
         });
       }
 
-      var products = new Array();
+      var products = [];
       async.map(categories, fetch, function (err, res) {
         if(!err) {
           res.forEach(function (element, index) {
-            var cat = new Array();
+            var cat = [];
             cat.push(res[index].products[0]);
             cat.push(res[index].products[1]);
             cat.push(res[index].products[2]);
             cat.push(res[index].products[3]); //DO IT LIVE
-            products.push(cat);
+            products.push({index: index + 1, items: cat});
           });
         }
         callback(err, products);
@@ -189,6 +189,9 @@ app.get('/destination/:nameUrl', function (req, res, next) {
     context.topGuides = results.topGuides;
     context.addlGuides = results.topGuides && results.topGuides.length - results.topGuides.length;
     context.areTopGuides = results.topGuides && results.topGuides.length>0;
+    context.products = results.products;
+
+    // console.log(context.products[0].items[0])
     
     res.render('destination', context);
   });
