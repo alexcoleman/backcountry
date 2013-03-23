@@ -119,18 +119,20 @@ app.get('/destination/:nameUrl', function (req, res, next) {
             }
           }
         }
-        
         var guides = new Array();
         for(count in counts) {
           guides.push(counts[count]);
         }
-        
+
         var topGuides = _.chain(guides)
          .sortBy(function(p) {return p.count})
-         .rest(guides.length-3)
          .reverse()
          .value();
          
+        if (topGuides && topGuides.length > 3) {
+          topGuides = _.first(topGuides, 3);
+        }
+        
          async.map(topGuides,
          function(item, callback) {
            app.db.collection('users').findOne({username: item.username}, function (err, user) {
