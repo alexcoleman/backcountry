@@ -8,7 +8,15 @@
 .rating img {width:20px; margin-right:5px;}
 
 h2 {padding-top:60px; text-align:center; color:#FFF; font-size:28px; line-height:28px; text-shadow:0 1px 1px rgba(0,0,0,.5);}
-
-.user-experience {margin:40px 0;}
+h3 {font-size:18px;}
+h3 a {font-size:11px; float:right;}
+.user-experience {margin:0 0 40px;}
 
 .product {margin-bottom:20px;}
+
+#activity {}
+#activity ul {margin:0;}
+#activity ul li {margin-bottom:10px; padding:20px; list-style-type:none;}
+#activity p {margin:0;}
+#activity .ss-icon {padding-right:10px; color:#65777f;}
+#activity .expand {background-color:#65777f; text-align:center; color:#F7F7F7; border-bottom:0; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65777f), color-stop(100%,#55666d)); box-shadow:0 2px 4px rgba(0,0,0,.2);}

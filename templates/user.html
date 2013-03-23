@@ -5,7 +5,7 @@
 </style>
 
 <div class="cover">
-  <h2>{{user.name}}</h2>
+  <h2>{{user.first_name}} {{user.last_name}}</h2>
 </div>
 
 <div class="user-profile">
@@ -25,16 +25,20 @@
 <div class="user-experience">
   <div class="container">
     <div class="row">
-      <div class="span9">
-        <h3>Recent Activity</h3>
-        <div class="box">
+      <div class="span8">
+        <h3>Experience</h3>
+        <!-- <div class="box"> -->
           {{> includes/activity.html}}
           {{> includes/reviews.html}}
-        </div>
+        <!-- </div> -->
       </div>
-      <div class="span3">
+      <div class="span4">
         <div class="row">
-          <h3>Top Gear</h3>
+          <div class="span4">
+            <h3>Favorite Gear <a href="http://www.backcountry.com">Via Backcountry</a></h3>
+          </div>
+        </div>
+        <div class="row">
           {{> includes/suggested-gear.html}}
         </div>
       </div>
