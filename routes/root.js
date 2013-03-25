@@ -200,7 +200,7 @@ app.get('/destination/:nameUrl', function (req, res, next) {
          })
       });
   
-    },
+    }/*,
     products: function (callback) {
       app.db.collection('destinations').findOne({nameUrl: req.params.nameUrl}, function (err, destination) {
         var categories = new Array();
@@ -241,16 +241,258 @@ app.get('/destination/:nameUrl', function (req, res, next) {
           callback(err, products);
         });
       });
-    }
+    }*/
   },
   function (err, results) {
     context.destination = results.destination;
     context.topGuides = results.topGuides;
     context.addlGuides = results.topGuides && results.topGuides.length - results.topGuides.length;
     context.areTopGuides = results.topGuides && results.topGuides.length>0;
-    context.products = results.products;
+    //context.products = results.products;
 
-    console.log(context.products[0].items[0])
+    //Temporary hack to remove the need for the Backcountry API
+    context.products = [
+      {
+        index: 1,
+        category: 'Trekking Poles',
+        items:
+        [
+          { 
+            id: 'BLD1280',
+            displayName: 'Ultra Distance Trekking Pole',
+            description: 'When weight is major concern because the lighter your gear the more mashed potato flakes you can pack, then you\'ll want the Black Diamond Ultra Distance Trekking Poles in your hands.',
+            brand: '14',
+            defaultSeoUrl: 'store/browse/productDetail.jsp?productId=BLD1280',
+            questionCount: 3,
+            imageCount: 3,
+            reviewCount: 14,
+            brandName: 'Black Diamond',
+            brandAndDisplayName: 'Black Diamond Ultra Distance Trekking Pole',
+            imageLarge:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/medium/BLD/BLD1280/ONECOL.jpg' },
+            priceDisplay: '$119.96',
+            availableColors: [ 'black' ],
+            ratingUrl: 'http://content.backcountry.com/images/bcs/review/search/rating_4.png',
+            averageReviewRating: '4.0',
+            onSale: false,
+            lowListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 149.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            lowSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 119.96,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 149.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 119.96,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            quantityOnHand: 52,
+            thumbnailImage:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/small/BLD/BLD1280/ONECOL.jpg' },
+            discountPercent: 20 
+          }
+        ]
+      },
+      {
+        index: 2,
+        category: 'Hydration Packs',
+        items:
+        [
+          { 
+            id: 'DAK2227',
+            displayName: 'Nomad Hydration Pack - 1100cu in',
+            description: 'Dakine\'s Nomad Hydration Pack is fully stocked with features for trail and freeride mountain biking, and its three-liter bladder keeps you quenched during all-day rides.',
+            brand: '23',
+            defaultSeoUrl: 'store/browse/productDetail.jsp?productId=DAK2227',
+            reviewCount: 1,
+            brandName: 'DAKINE',
+            brandAndDisplayName: 'DAKINE Nomad Hydration Pack - 1100cu in',
+            imageLarge:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/medium/DAK/DAK2227/RD.jpg' },
+            priceDisplay: '$76.97 - $91.96',
+            availableColors: [ 'green', 'blue', 'black', 'gray', 'red' ],
+            ratingUrl: 'http://content.backcountry.com/images/bcs/review/search/rating_5.png',
+            averageReviewRating: '4.5',
+            onSale: false,
+            lowListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 109.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            lowSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 76.97,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 114.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 91.96,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            quantityOnHand: 223,
+            thumbnailImage:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/small/DAK/DAK2227/RD.jpg' },
+            discountPercent: 30
+          }
+        ]
+      },
+      {
+        index: 3,
+        category: 'Gloves',
+        items:
+        [
+          {
+            id: 'PWG0085',
+            displayName: 'Stealth GTX Glove',
+            description: 'The Pow Stealth GTX Glove provides versatile, low-profile hand protection for mid-winter rope-ducking missions.',
+            brand: '100000516',
+            defaultSeoUrl: 'store/browse/productDetail.jsp?productId=PWG0085',
+            reviewCount: 5,
+            brandName: 'Pow Gloves',
+            brandAndDisplayName: 'Pow Gloves Stealth GTX Glove',
+            imageLarge:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/medium/PWG/PWG0085/RAS.jpg' },
+            priceDisplay: '$69.97 - $99.95',
+            availableColors: [ 'black', 'red' ],
+            ratingUrl: 'http://content.backcountry.com/images/bcs/review/search/rating_5.png',
+            averageReviewRating: '4.6',
+            onSale: false,
+            lowListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 99.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            lowSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 69.97,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 99.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 99.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            quantityOnHand: 38,
+            thumbnailImage:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/small/PWG/PWG0085/RAS.jpg' },
+            discountPercent: 30
+          }
+        ]
+      },
+      {
+        index: 4,
+        category: 'Dry Sacks',
+        items:
+        [
+          {
+            id: 'ODR0761',
+            displayName: 'Double Dry Window Sack',
+            description: 'Stash your GPS, cell phone, and small essentials inside the Outdoor Research Double Dry Window Sack when you need waterproof storage as you raft or kayak on big water.',
+            brand: '100000248',
+            defaultSeoUrl: 'store/browse/productDetail.jsp?productId=ODR0761',
+            questionCount: 1,
+            reviewCount: 2,
+            brandName: 'Outdoor Research',
+            brandAndDisplayName: 'Outdoor Research Double Dry Window Sack',
+            imageLarge:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/medium/ODR/ODR0761/MAR.jpg' },
+            priceDisplay: '$25.46 - $36.51',
+            availableColors: [ 'blue', 'gray', 'red' ],
+            ratingUrl: 'http://content.backcountry.com/images/bcs/review/search/rating_5.png',
+            averageReviewRating: '5.0',
+            onSale: false,
+            lowListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 29.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            lowSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 25.46,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highListPrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 42.95,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            highSalePrice:
+             { zero: false,
+               currency: 'USD',
+               amount: 36.51,
+               roundingStyle: 'HALF_EVEN',
+               plus: true,
+               minus: false },
+            quantityOnHand: 83,
+            thumbnailImage:
+             { name: '',
+               url: 'http://content.backcountry.com/images/items/small/ODR/ODR0761/MAR.jpg' },
+            discountPercent: 15
+          }
+        ]
+      }
+    ];
+    context.products.forEach(function (element, index) {
+      context.products[index].items.push(context.products[index].items[0]);
+      context.products[index].items.push(context.products[index].items[0]);
+      context.products[index].items.push(context.products[index].items[0]);
+    });
 
     context.page.title = results.destination.name;
     res.render('destination', context);
