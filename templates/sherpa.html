@@ -1,0 +1,49 @@
+{{> includes/header.html}}
+<div id="signup">
+  <h2>Become a Sherpa Guide</h2>
+  <h3>Sherpa helps you make money by taking people the hikes you know</h3>
+  <h4></h4>
+  <ul>
+    <li>Where do you live? <input type="text" value="" placeholder="Las Vegas, NV" class="text-input" /></li>
+    <li>What's the name of your favorite trail in your area? <input type="text" value="" placeholder="Turtlehead Peak" class="text-input" /></li>
+    <li>Have you ever lead a hike before? yes <input type="radio" value="yes" /> no <input type="radio" value="no" /></li>
+    <li><button>Continue</button> </li>
+  </ul>
+</div>
+<div id="create-account">
+<p>Great, got it!</p>
+
+<p>To show us you're legit, sign up and ask a few friends to vouche for you.</p>
+<ul class="facebook-friends">
+  <li><a href="#" class="fb-login">Facebook Login</a></li>
+  <li><input type="text" placeholder="Friend Name" /></li>
+  <li><input type="text" placeholder="Friend Name" /></li>
+  <li><input type="text" placeholder="Friend Name" /></li>
+  <li><a href="#" class="add-more">Add a 5 more for $10 in hiking credits!</a></li>
+</ul>
+<p>or</p>
+<ul class="email-friends">
+  <li><a href="#">Sign up with your email address</a></li>
+  <li><input type="text" placeholder="Friend Email" /></li>
+  <li><input type="text" placeholder="Friend Email" /></li>
+  <li><input type="text" placeholder="Friend Email" /></li>
+  <li><a href="#" class="add-more">Add a 5 more for $10 in hiking credits!</a></li>
+</ul>
+
+<a href="#" class="account-link">Done. Go to Account</a>
+</div>
+
+<div id="account-dashboard">
+  <h1>Dashboard</h1>
+  <p>Vouches: <strong>5</strong> </p>
+  <p>Money Earned: <strong>$4</strong> </p>
+
+  <p>Share URL for more vouches: <input type="text" value="http://www.shurpa.com/T6S4QL" /></p>
+  <p>$10 in hiking credits for every 5 people who sign up using your link.</p>
+  <a href="#">Facebook</a> <a href="#">Meetup</a> <a href="#">Tweet</a> 
+
+  <h3>...while you wait</h3>
+  <p>You don't have to just wait to start hiking with your friends. Start posting hikes and tagging friends now!</p>
+  <p><img src="/img/add-hike.png"></p>
+</div>
+{{> includes/footer.html}}

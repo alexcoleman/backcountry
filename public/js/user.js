@@ -22,7 +22,12 @@ function setupHikeAutoComplete() {
     'Deseret Peak (via Mill Fork Trail)'
     ];
 
-  $('#hike-name').typeahead({source: hikenames});
+  $('#hike-name').typeahead({
+    source: hikenames,
+    updater: function (hikeName) {
+      $('#add-hike').append('<span>Hiked ' + hikeName + ' with </span>');
+    }
+  });
 }
 
 function setupFriendAutoComplete() {
